@@ -61,70 +61,89 @@
         <a class="nav-link dropdown-toggle" href="projects.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Projects
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu active" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="projects.html">My Projects</a>
-          <a class="dropdown-item" href="projects.html">My Teams</a>
+          <a class="dropdown-item" href=projects.html#">My Teams</a>
       </li>
        <li class="nav-item">
         <a class="nav-link" href="#">Forum</a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="login.html" tabindex="-1" aria-disabled="true">Login/Register</a>
       </li>
     </ul>
   </div>
 </nav>
-<div class="container-fluid">
-    <div class="container">
-      <h2 class="text-center" id="title"><img src="images/logocrop.png" alt="logocopy"></h2>
-      <hr>
-      <div class="row">
-        <div class="col-md-5">
-          <form role="form" method="post" action="register.php">
-            <fieldset>              
-              <p class="text-uppercase pull-center"> Register:</p> 
-              <div class="form-group">
-                <input type="text" name="username" id="username" class="form-control input-lg" placeholder="Username">
-              </div>
+  <div class="container-fluid">
 
-              <div class="form-group">
-                <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address">
-              </div>
-              <div class="form-group">
-                <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password">
-              </div>
-              <div>
-                    <input type="submit" class="btn btn-md btn-primary   value="Register">
-              </div>
-            </fieldset>
-          </form>
-        </div>
-        
-        <div class="col-md-2">
-          <!-------null------>
-        </div>
-        
-        <div class="col-md-5">
-            <form role="form">
-            <fieldset>              
-              <p class="text-uppercase"> Login: </p> 
-                
-              <div class="form-group">
-                <input type="email" name="username" id="username" class="form-control input-lg" placeholder="Username">
-              </div>
-              <div class="form-group">
-                <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password">
-              </div>
-              <div>
-                    <input type="submit" class="btn btn-md btn-primary   value="Register">
-              </div>
-                 
-            </fieldset>
-        </form> 
+    <div class="row pl-1">
+
+      <div class="col-lg-4">
+        <h1 class="my-4">My Devices</h1>
+        <div class="list-group">
+          <table class="table">
+  <caption>List of users</caption>
+  <thead>
+    <tr>
+      <th scope="col">Device Name</th>
+      <th scope="col justify-content-start">Device No.</th>
+      <th scope="col justify-content-start">Status</th>
+      <th scope="col justify-content-start">Location</th>
+      <th scope="col justify-content-start">Owner</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>JMU Box 1</td>
+      <td>923817</td>
+      <td>Active</td>
+      <td>38.4380° N, 78.8750° W</td>
+      <td>Shelly Hokanson</td>
+    </tr>
+    <tr>
+      <td>JMU Box 2</td>
+      <td>309963</td>
+      <td>Active</td>
+      <td>38.4335° N, 78.8726° W</td>
+      <td>Carey Cole</td>
+    </tr>
+    <tr>
+      <td>JMU Box 3</td>
+      <td>100846</td>
+      <td>Active</td>
+      <td>38.4394° N, 78.8722° W</td>
+      <td>David Wang</td>
+    </tr>
+  </tbody>
+</table>
         </div>
       </div>
+      <!-- /.col-lg-4 -->
+
+      <div class="col-lg-8">
+
+        <div class="card mt-4">
+          <div class="card-body">
+            <h2 class="card-title">My Projects</h2>
+            <hr>
+            <h5>Project Shrew</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
+            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+            4.0 stars <h5>Project Blazer</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
+            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+            4.0 stars
+          </div>
+        </div>
+        <!-- /.card -->
+
+      </div>
+      <!-- /.col-lg-8 -->
+
     </div>
+
   </div>
+  <!-- /.container -->
 <!-- jQuery and Bootstrap links - do not delete! -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
