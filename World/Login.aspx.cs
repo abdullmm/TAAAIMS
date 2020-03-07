@@ -40,6 +40,7 @@ public partial class Login : System.Web.UI.Page
                 reader.Read();
                 userId = Convert.ToInt32(reader["UserId"]);
                 roles = reader["Roles"].ToString();
+                Session["userId"] = userId;
                 con.Close();
             }
             switch (userId)
