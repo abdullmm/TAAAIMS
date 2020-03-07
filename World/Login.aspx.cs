@@ -66,4 +66,9 @@ public partial class Login : System.Web.UI.Page
             }
         }
     }
+
+    protected void btnLink_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/ActivateUnit.aspx");
+    }
 }

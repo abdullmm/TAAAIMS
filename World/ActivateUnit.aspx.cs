@@ -11,6 +11,7 @@ public partial class ActivateUnit : System.Web.UI.Page
 {
     static string connString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
     SqlConnection conn = new SqlConnection(connString);
+    static int deviceId = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -20,14 +21,16 @@ public partial class ActivateUnit : System.Web.UI.Page
     protected void Activate_Click(object sender, EventArgs e)
     {
         conn.Open();
-        SqlCommand cmd = new SqlCommand("select ActivationCode from [dbo].[Unit] where ActivationCode = @code and DeviceID = @id");
+        SqlCommand cmd = new SqlCommand("select ActivationCode from [dbo].[Device] where ActivationCode = @code and DeviceID = @id");
         cmd.Connection = conn;
         cmd.Parameters.AddWithValue("@code", AccessCode.Text);
         cmd.Parameters.AddWithValue("@id", DeviceNumber.Text);
         SqlDataReader reader = cmd.ExecuteReader();
         if (reader != null && reader.HasRows)
         {
-            Label2.Text = "Hello There Champ";
+            Label2.Text = "Device Number: " + DeviceNumber.Text + " Has been successfuly added";
+            deviceId = Int32.Parse(DeviceNumber.Text);
+            Session["deviceId"] = deviceId;
             Response.Redirect("OwnerSignUp.aspx");
         }
         else

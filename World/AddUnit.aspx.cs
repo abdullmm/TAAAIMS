@@ -16,7 +16,8 @@ public partial class AddUnit : System.Web.UI.Page
     {
         if (!this.IsPostBack)
         {
-            BindGridView();
+            this.GridView1.DataBind();
+            //BindGridView();
             if (this.Page.User.Identity.IsAuthenticated)
             {
                 if (Session["UserId"] != null)
@@ -27,27 +28,29 @@ public partial class AddUnit : System.Web.UI.Page
         }       
     }
 
-    private void BindGridView()
-    {       
-        {
-            if (Session["UserId"] != null)
-            {
-                conn.Open();
-                SqlCommand attach = new SqlCommand("SELECT * FROM [dbo].[Device] INNER JOIN [dbo].[Users] ON Device.DeviceID = Users.DeviceID WHERE(Users.UserId = @userid)");
-                attach.Connection = conn;
-                attach.Parameters.AddWithValue("@userId", (int)Session["userId"]);
-                attach.ExecuteNonQuery();
-                //cmd.CommandType = CommandType.StoredProcedure;
-                //"spGetProductList"
+    //private void BindGridView()
+    //{       
+    //    {
+    //        if (Session["UserId"] != null)
+    //        {
+    //            conn.Open();
+    //            SqlCommand attach = new SqlCommand("grid_Bind");
+    //            //"SELECT * FROM [dbo].[Device] INNER JOIN [dbo].[Users] ON Device.DeviceID = Users.DeviceID WHERE(Users.UserId = @userid)"
+    //            attach.CommandType = CommandType.StoredProcedure;
+    //            attach.Connection = conn;
+    //            attach.Parameters.AddWithValue("@userId", (int)Session["userId"]);
+    //            attach.ExecuteNonQuery();
+    //            //cmd.CommandType = CommandType.StoredProcedure;
+    //            //"spGetProductList"
                            
-                GridView1.DataSource = attach.ExecuteReader();
-                GridView1.DataBind();
-                conn.Close();
+    //            GridView1.DataSource = attach.ExecuteReader();
+    //            GridView1.DataBind();
+    //            conn.Close();
 
 
-            }                    
-        }
-    }
+    //        }                    
+    //    }
+    //}
 
 
     protected void add_Click(object sender, EventArgs e)
@@ -65,17 +68,18 @@ public partial class AddUnit : System.Web.UI.Page
             SqlCommand update = new SqlCommand();
             update.Connection = conn;
             //cmd.CommandType = CommandType.StoredProcedure;
-            update.CommandText = "update [dbo].[Users] SET DeviceID = @deviceId where UserId = @userId ";
+            update.CommandText = "update [dbo].[Device] SET UserId = @userId where DeviceID = @deviceId";
             update.Parameters.AddWithValue("@deviceId", deviceNumber.Text);
             update.Parameters.AddWithValue("@userId", (int)Session["userId"]);
             update.ExecuteNonQuery();
             
-            lblError.Text = "Hello There Champ";
+            lblError.Text = "Device Number: " + deviceNumber.Text + " Has been successfuly added"; ;
         }
         else
         {
             lblError.Text = "Invalid Code";
         }
         conn.Close();
+        this.GridView1.DataBind();
     }
 }

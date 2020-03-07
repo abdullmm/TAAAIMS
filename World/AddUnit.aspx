@@ -22,22 +22,27 @@
         </div>
         <div class="form-group">
             <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="DeviceID" DataSourceID="SqlDataSource1">
                 <Columns>  
-                    <asp:BoundField HeaderText="DeviceID" DataField="DeviceID" />  
-                    <asp:BoundField HeaderText="Nickname" DataField="Nickname]" />  
-                    <asp:BoundField HeaderText="Bluetooth" DataField="Bluetooth" />  
-                    <asp:BoundField HeaderText="Wifi" DataField="Wifi" />
-                    <asp:BoundField HeaderText="Mode" DataField="MediaMode" />  
-                    <asp:BoundField HeaderText="Interval Delay" DataField="IntervalDelay" />  
-                    <asp:BoundField HeaderText="Video Duration" DataField="VideoDuration" />
-                    <asp:BoundField HeaderText="Number Images" DataField="NumberImages" />
-                    <asp:BoundField HeaderText="Weight Unit" DataField="WgtUnit" /> 
-                    <asp:BoundField HeaderText="Battery Life" DataField="BattLife" /> 
-                    <asp:BoundField HeaderText="Latitude" DataField="Latitude" />
-                    <asp:BoundField HeaderText="Longitude" DataField="Longitude" /> 
+                    <asp:BoundField HeaderText="DeviceID" DataField="DeviceID" InsertVisible="False" ReadOnly="True" SortExpression="DeviceID" />  
+                    <asp:BoundField HeaderText="Nickname" DataField="Nickname" SortExpression="Nickname" />  
+                    <asp:BoundField HeaderText="Bluetooth" DataField="Bluetooth" SortExpression="Bluetooth" />  
+                    <asp:BoundField HeaderText="Wifi" DataField="Wifi" SortExpression="Wifi" />
+                    <asp:BoundField HeaderText="MediaMode" DataField="MediaMode" SortExpression="MediaMode" />  
+                    <asp:BoundField HeaderText="IntervalDelay" DataField="IntervalDelay" SortExpression="IntervalDelay" />  
+                    <asp:BoundField HeaderText="VideoDuration" DataField="VideoDuration" SortExpression="VideoDuration" />
+                    <asp:BoundField HeaderText="NumberImages" DataField="NumberImages" SortExpression="NumberImages" />
+                    <asp:BoundField HeaderText="WgtUnit" DataField="WgtUnit" SortExpression="WgtUnit" /> 
+                    <asp:BoundField HeaderText="BattLife" DataField="BattLife" SortExpression="BattLife" /> 
+                    <asp:BoundField HeaderText="Latitude" DataField="Latitude" SortExpression="Latitude" />
+                    <asp:BoundField HeaderText="Longitude" DataField="Longitude" SortExpression="Longitude" /> 
                 </Columns> 
             </asp:GridView>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LoginDBConnectionString %>" SelectCommand="grid_Bind" SelectCommandType="StoredProcedure">
+                <SelectParameters>
+                    <asp:SessionParameter Name="userId" SessionField="userId" Type="Int32" />
+                </SelectParameters>
+            </asp:SqlDataSource>
         </div>
     </div>
 </asp:Content>

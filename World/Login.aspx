@@ -5,7 +5,7 @@
     <link href="/Shared/mycustom.css" rel="stylesheet" type="text/css" media="screen" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<div class="text-center bg-dark">
+    <div class="text-center bg-dark">
     <div class="row d-flex justify-content-center">
   <!--Grid column-->
   <div class="col-md-6">
@@ -66,7 +66,7 @@
                   <p align="center"> Not a Device Owner or Registered User? <br />
                       Create an account after activating a Device
                   </p>
-                   <asp:Button ID="btnLink" runat="server"  Text="Activate A Device" class="btn btn-warning" />
+                   <asp:Button ID="btnLink" runat="server"  Text="Activate A Device" class="btn btn-warning" OnClick="btnLink_Click" />
               </div>
                  
             </fieldset>

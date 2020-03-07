@@ -60,8 +60,13 @@
                                           </div>  
                                           <div class="form-group" align="center">
                                                 <%--<asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>--%>
-                                                <asp:Button ID="btnCreate" runat="server" CommandName="Login" Text="Create Account" class="btn btn-warning" OnClick="btnCreate_Click" />
-                                          </div>                                                          
+                                                <asp:Button ID="btnCreate" runat="server" CommandName="create" Text="Create Account" class="btn btn-warning" OnClick="btnCreate_Click" />
+                                                
+                                          </div>
+                                            <div class="form-group" align="center">
+                                                <asp:Button ID="btnLogin" runat="server" CommandName="login" Text="Login Page" class="btn btn-warning" OnClick="btnLogin_Click" Visible="false" CausesValidation="False"/>
+                                                <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+                                            </div>                                           
                                         </fieldset>     
                                     </div>        
                                 </div>

@@ -172,3 +172,4 @@ BEGIN
 		SELECT -1 [UserId], '' [Roles] -- User invalid.
 	END
 END
+
