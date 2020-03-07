@@ -106,13 +106,23 @@
                     <%--<asp:LoginName ID="LoginName1" runat="server" Font-Bold="true" />--%>
                     
                     <asp:Label ID="lblLastLoginDate" runat="server" />
-                    <asp:LoginStatus ID="LoginStatus1" runat="server" CssClass="menu"/>
+                    <asp:LoginStatus ID="LoginStatus1" runat="server" CssClass="menu" LogoutAction="Redirect"
+                    LogoutPageUrl="~/Home.aspx"/>
                     
               
                 
                 
                               
             </LoggedInTemplate>
+                     <RoleGroups>
+                        <asp:RoleGroup Roles="Owner">
+                            <ContentTemplate>
+                                <a  href="AddUnit.aspx" class="menu">Add Unit</a>
+                                <asp:LoginName id="LoginName2" runat="Server"></asp:LoginName>, you
+                                are logged in as an Owner.
+                            </ContentTemplate>
+                        </asp:RoleGroup>
+                    </RoleGroups>
 
             
         </asp:LoginView>

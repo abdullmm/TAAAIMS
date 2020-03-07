@@ -18,7 +18,7 @@ public partial class Login : System.Web.UI.Page
             if (this.Page.User.Identity.IsAuthenticated)
             {
                 FormsAuthentication.SignOut();
-                Response.Redirect("~/Home.aspx");
+                Response.Redirect("~/Login.aspx");
             }
         }
     }
