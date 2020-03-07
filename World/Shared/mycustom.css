@@ -1,0 +1,60 @@
+﻿#cover {
+    /*background-color: grey;*/
+    background-size: cover;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#cover-caption {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* only used for background overlay not needed for centering */
+#form:before {
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    z-index: -1;
+    border-radius: 5px;
+    
+}
+
+#grey1 {
+    background-color: grey;
+    background-size: cover;
+}
+
+#profile {
+    width: 20em;
+}
+
+#avatar {
+    border-radius: 50%;
+}
+
+.custom-dropdown {
+    width: 15em;
+}
+
+.custom-textbox {
+    width: 5em;
+}
+
+#accountForm{
+    height: 30em;
+    width: 50em;
+}
+
+.teamLogo {
+    height: 30%;
+    width: 30%;
+}
