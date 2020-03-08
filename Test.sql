@@ -12,7 +12,7 @@ Create table Device
 [BattLife] [Int],
 [Latitude] [Decimal](12, 10),
 [Longitude] [Decimal](12, 10),
-[UserId] [INT] NULL FOREIGN KEY (UserId) REFERENCES Users(UserId)
+[UserId] [INT] NULL FOREIGN KEY (UserId) REFERENCES Users(UserId) ON UPDATE CASCADE
 )
 
 Insert into Device values ('hello', 'device_1_bryan', 1, NULL, 'video', 3, 5, 2, 'grams', 82, 35.52477, -78.999561, NULL);

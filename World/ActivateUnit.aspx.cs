@@ -17,7 +17,6 @@ public partial class ActivateUnit : System.Web.UI.Page
 
     }
 
-    
     protected void Activate_Click(object sender, EventArgs e)
     {
         conn.Open();
@@ -28,14 +27,21 @@ public partial class ActivateUnit : System.Web.UI.Page
         SqlDataReader reader = cmd.ExecuteReader();
         if (reader != null && reader.HasRows)
         {
-            Label2.Text = "Device Number: " + DeviceNumber.Text + " Has been successfuly added";
+            lblError.Text = "Access Code is valid. Create an Account";
+            lblError.Visible = true;
             deviceId = Int32.Parse(DeviceNumber.Text);
             Session["deviceId"] = deviceId;
-            Response.Redirect("OwnerSignUp.aspx");
+            btnCreate.Visible = true;
         }
         else
         {
-            Label2.Text = "Invalid Code";
+            lblError.Visible = true;
+            lblError.Text = "Invalid Device ID and Access Code";
         }
+    }
+
+    protected void btnCreateAccount(object sender, EventArgs e)
+    {
+        Response.Redirect("OwnerSignUp.aspx");
     }
 }

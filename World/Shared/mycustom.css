@@ -1,5 +1,27 @@
-﻿#cover {
-    /*background-color: grey;*/
+﻿.margin-top {
+    margin-top: 10px;
+}
+
+.block1 {
+    height: 50em;
+    border: 15px solid #292b2c;
+}
+
+.block2 {
+    height: 150px;
+    background-color: white;
+    border: 7px solid #292b2c;
+}
+/*#6c757d*/
+.grey1 {
+    background-color: #6c757d;
+}
+
+body {
+    background-color: #292b2c;
+}
+
+#cover {
     background-size: cover;
     height: 100%;
     text-align: center;
@@ -24,13 +46,7 @@
     width: 100%;
     background-color: white;
     z-index: -1;
-    border-radius: 5px;
-    
-}
-
-#grey1 {
-    background-color: grey;
-    background-size: cover;
+    border-radius: 5px;   
 }
 
 #profile {
@@ -58,3 +74,4 @@
     height: 30%;
     width: 30%;
 }
+

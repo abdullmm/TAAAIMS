@@ -1,13 +1,3 @@
-[DeviceID] [INT] NULL FOREIGN KEY (DeviceID) REFERENCES Device(DeviceID),
-
-
-CREATE PROCEDURE Add_Unit
-@userId int, 
-@deviceId int
-AS
-UPDATE [dbo].[Users] SET DeviceID = @deviceId where UserId = @userId
-GO;
-
 GO
 CREATE PROCEDURE grid_Bind
 @userId int 

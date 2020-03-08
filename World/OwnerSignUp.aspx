@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeFile="OwnerSignUp.aspx.cs" Inherits="OwnerSignUp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <link href="/Shared/mycustom.css" rel="stylesheet" type="text/css" media="screen" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 <div class="text-center bg-dark">
@@ -12,8 +11,6 @@
                     <div class="row">
                         <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4 bg-white">
                         <h2 class="text-center" id="title"><img src="/images/logocrop.png" alt="logocopy" runat="server" id="logo" class="teamLogo"/></h2>
-                        <%--class="display-4 py-2"--%>
-                        <%-- <p>  Account Login</p>--%>
                             <div class="px-2 ">
                                 <div id="form" class="justify-content-center">
                                     <div align="center">
@@ -75,8 +72,6 @@
                     </div>
                 </div>
             </div>
-<%--</div>
-</div>--%>
         </div>
     </div>
 </div>     
