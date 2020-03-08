@@ -6,7 +6,7 @@
     <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
     <asp:TextBox ID="txtNewPassword" runat="server"></asp:TextBox>
     <asp:TextBox ID="txtConfirmPassword" runat="server"></asp:TextBox>
-    <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="CompareValidator"></asp:CompareValidator>
+    <asp:CompareValidator ID="validCompare" runat="server" ErrorMessage="(Passwords must match!)" Operator="Equal" ControlToValidate="txtNewPassword" ControlToCompare="txtConfirmPassword"></asp:CompareValidator>
     <asp:Button ID="btnChangePassword" runat="server" Text="Change Password" OnClick="btnChangePassword_Click" />
     <asp:Button ID="btnAccount" runat="server" Text="Account Settings" OnClick="btnAccount_Click" />
     <asp:Label ID="lblValid" runat="server" Text=""></asp:Label>

@@ -97,7 +97,7 @@
                <a href="Home.aspx" class="menu">Home</a>
                <a href="Purchase.aspx" class="menu">Purchase</a>
                <a href="Contact.aspx" class="menu">Forum</a>
-               <a href="/Shared/MyAccount.aspx" class="menu">My Account</a>
+               <a href="MyAccount.aspx" class="menu">My Account</a>
                
                <%--<asp:LoginName ID="LoginName1" runat="server" Font-Bold="true" />--%>
                     
@@ -112,7 +112,7 @@
                                 <a href="Purchase.aspx" class="menu">Purchase</a>
                                 <a href="AddUnit.aspx" class="menu">Add Unit</a>
                                 <a href="Contact.aspx" class="menu">Forum</a>
-                                <a href="/Shared/MyAccount.aspx" class="menu">My Account</a>
+                                <a href="MyAccount.aspx" class="menu">My Account</a>
                                 <asp:LoginStatus ID="LoginStatus1" runat="server" CssClass="menu" LogoutAction="Redirect" LogoutPageUrl="/Home.aspx"/>
                                 <%--<asp:LoginName id="LoginName2" runat="Server"></asp:LoginName>, you
                                 are logged in as an Owner.--%>
