@@ -9,6 +9,18 @@ public partial class ChangePassword : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        
+    }
 
+
+
+    protected void btnChangePassword_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnAccount_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("MyAccount.aspx");
     }
 }

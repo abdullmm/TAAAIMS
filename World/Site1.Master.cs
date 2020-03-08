@@ -11,6 +11,13 @@ namespace User_Login_CS
 {
     public partial class Site1 : System.Web.UI.MasterPage
     {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if(!this.IsPostBack)
+            {
+                
+            }
+        }
         protected void OnMenuItemDataBound(object sender, MenuEventArgs e)
         {
             if (SiteMap.CurrentNode != null)

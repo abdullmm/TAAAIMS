@@ -72,7 +72,7 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav" >
             <div class="nav navbar-nav">
                 <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false" SiteMapProvider="SiteMap"/>
-                <asp:Menu ID="Menu" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" RenderingMode="List"
+                <asp:Menu ID="MenuBar" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" RenderingMode="List"
                 OnMenuItemDataBound="OnMenuItemDataBound" StaticMenuStyle-CssClass="nav navbar-nav" DynamicMenuStyle-CssClass="dropdown-menu" StaticSelectedStyle-CssClass="nav-item active">
                 <LevelMenuItemStyles>
                     <asp:MenuItemStyle CssClass="main_menu" />
