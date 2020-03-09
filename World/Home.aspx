@@ -251,27 +251,7 @@
 	
 	}
 
- 
-	function onGeocodeResponse(response, status) {
-		// the Geocode service has sent its response. We can now use it for the map
-		if (status == google.maps.GeocoderStatus.OK) {
-		// center the map at the location returned from the geocoding service
-		map.setCenter(response[0].geometry.location);
-		
-		// set up the store names for the city to display in marker tool tip
-		var storesInCity = "\n";
-		for (var i = 0; i < dataTable3.getNumberOfRows(); i++) {
-		if (response[0].address_components[0].long_name == dataTable3.getValue(i,1))
-		storesInCity += "\n" + dataTable3.getValue(i,0);
-		}
 
-		var marker = new google.maps.Marker({
-		map: map,
-		position: response[0].geometry.location,
-		title: response[0].address_components[0].long_name + storesInCity				});
-		}
-		//else alert("error in geocoding: " + status);	// typically this will mean exceed query limit
-		}
     </script>
 <%--</head>
     </html>--%>
