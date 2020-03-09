@@ -17,5 +17,3 @@ SELECT [DeviceID], [Nickname], [Bluetooth],
 FROM [dbo].[Device] INNER JOIN [dbo].[Users] ON Device.UserId = Users.UserId WHERE(Users.UserId = @userid)
 END
 
-ALTER TABLE Users
-ADD [DeviceID] [INT] NULL FOREIGN KEY (DeviceID) REFERENCES Device(DeviceID);
