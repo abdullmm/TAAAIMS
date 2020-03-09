@@ -45,23 +45,7 @@ public partial class ChangePassword : System.Web.UI.Page
             lblValid.Text = "Unsuccessful Password Change";
         }
         conn.Close();
-        //string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
-        //using (SqlConnection con = new SqlConnection(constr))
-        //{
-        //    using (SqlCommand cmd = new SqlCommand("change_Password"))
-        //    {
-        //        cmd.CommandType = CommandType.StoredProcedure;
-        //        cmd.Parameters.AddWithValue("@UserId", (int)Session["userId"]);
-        //        cmd.Parameters.AddWithValue("@OldPassword", txtPassword.Text);
-        //        cmd.Parameters.AddWithValue("@NewPassword", txtNewPassword.Text);
-        //        cmd.Connection = con;
-        //        con.Open();
-
-        //        con.Close();
-        //        lblValid.Text = "Password has been changed successfully";
-        //    }
-
-        //}
+        
     }
 
     protected void btnAccount_Click(object sender, EventArgs e)
