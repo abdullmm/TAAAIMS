@@ -15,7 +15,6 @@ public partial class MyAccount : System.Web.UI.Page
     static String imagelink1;
     static string connString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
     SqlConnection con = new SqlConnection(connString);
-    //List<ListItem> files = new List<ListItem>();
     protected void Page_Load(object sender, EventArgs e)
     {
         if(!this.IsPostBack)
@@ -113,10 +112,13 @@ public partial class MyAccount : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@UserId", (int)Session["userId"]);
                 con.Open();
                 cmd.ExecuteNonQuery();
-                lblError.Text = "Record Has Been Updated Successfully";
+                lblError.Text = "Profile Picture Has Been Updated!";
             }
         }
-        //else
+        else
+        {
+            lblError.Text = "Profile Picture did not update";
+        }
         //{
 
         //    //String updatedata = "Update profiledetail set sname='" + TextBox2.Text + "', fname='" + TextBox3.Text + "', mname='" + TextBox4.Text + "' where rollno=" + TextBox1.Text;
@@ -200,7 +202,6 @@ public partial class MyAccount : System.Web.UI.Page
 
     protected void btnUpdate_Click(object sender, EventArgs e)
     {
-        //update.Parameters.AddWithValue("@image", imagelink);
         SqlCommand update = new SqlCommand();
         update.Connection = con;
         con.Open();
