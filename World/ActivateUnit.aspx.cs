@@ -36,7 +36,7 @@ public partial class ActivateUnit : System.Web.UI.Page
         else
         {
             lblError.Visible = true;
-            lblError.Text = "Invalid Device ID and Access Code";
+            lblError.Text = "Invalid Device ID or Access Code";
         }
     }
 

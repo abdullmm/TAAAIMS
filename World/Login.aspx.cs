@@ -13,6 +13,12 @@ public partial class Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
+
+
+
+
+
         if (!this.IsPostBack)
         {
             if (this.Page.User.Identity.IsAuthenticated)

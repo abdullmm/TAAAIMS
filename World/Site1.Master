@@ -59,6 +59,8 @@
             font-size: 20px;
             text-decoration: none;
         }
+
+
         </style>
     <%--DynamicMenuItemStyle-Css="nav-item"--%>    
 </head>
@@ -75,10 +77,8 @@
                 <asp:Menu ID="MenuBar" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" RenderingMode="List"
                 OnMenuItemDataBound="OnMenuItemDataBound" StaticMenuStyle-CssClass="nav navbar-nav" DynamicMenuStyle-CssClass="dropdown-menu" StaticSelectedStyle-CssClass="nav-item active">
                 <LevelMenuItemStyles>
-                    <asp:MenuItemStyle CssClass="main_menu" />
-                    <asp:MenuItemStyle CssClass="level_menu" />
-                    <asp:MenuItemStyle CssClass="nav-item" /> 
-                    <asp:MenuItemStyle CssClass="nav-link" /> 
+                    <asp:MenuItemStyle CssClass="menu" />
+
                </LevelMenuItemStyles>
                <StaticHoverStyle />
                <StaticSelectedStyle />                                     
