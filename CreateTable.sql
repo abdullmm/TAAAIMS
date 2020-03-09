@@ -117,7 +117,8 @@ CREATE PROCEDURE [dbo].[Insert_User]
 	@Username NVARCHAR(20),
 	@Password NVARCHAR(50),
 	@Email NVARCHAR(30),
-	@Role [int]
+	@Role [int],
+	@Image [varchar](30)
 AS
 BEGIN
 	SET NOCOUNT ON;
@@ -140,6 +141,7 @@ BEGIN
 			   ,[Email]
 			   ,[CreatedDate]
 			   ,[RoleId])
+			   ,[Image]
 		VALUES
 			   (@Username
 			   ,HASHBYTES('SHA2_512', @Password+CAST(@salt AS NVARCHAR(36)))
@@ -147,6 +149,7 @@ BEGIN
 			   ,@Email
 			   ,GETDATE()
 			   ,@Role)
+			   ,@Image
 		
 		SELECT SCOPE_IDENTITY() -- UserId			   
      END

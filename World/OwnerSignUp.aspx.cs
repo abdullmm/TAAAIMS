@@ -11,6 +11,7 @@ using System.Configuration;
 
 public partial class OwnerSignUp : System.Web.UI.Page
 {
+    static String imagelink = "~/Files/personavatar.png";
     static int userId = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -26,8 +27,7 @@ public partial class OwnerSignUp : System.Web.UI.Page
 
 
     protected void btnCreate_Click(object sender, EventArgs e)
-    {
-        
+    {       
         string roles = string.Empty;
         string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
         SqlConnection conn = new SqlConnection(constr);
@@ -42,6 +42,7 @@ public partial class OwnerSignUp : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
                 cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
                 cmd.Parameters.AddWithValue("@Role", 3);
+                cmd.Parameters.AddWithValue("@Image", imagelink);
                 cmd.ExecuteNonQuery();
                 con.Close();
                 lblValid.Visible = true;
