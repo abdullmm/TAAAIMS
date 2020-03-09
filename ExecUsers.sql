@@ -38,9 +38,4 @@ EXEC dbo.[Insert_User]
 @Email = 'owner@gmail.com',
 @Role = '3'
 
-EXEC dbo.[Insert_User]
-@Username = 'Root',
-@Password = '12345',
-@Email = 'owner@gmail.com',
-@Role = '3'
 

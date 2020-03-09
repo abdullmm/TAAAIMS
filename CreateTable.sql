@@ -43,11 +43,16 @@ CREATE TABLE [dbo].[Users](
 	[UserId] [int] IDENTITY(1,1) NOT NULL,
 	[Username] [nvarchar](20) NOT NULL,
 	[Password] [nvarchar](50) NOT NULL,
-	[Salt] UNIQUEIDENTIFIER Null,
-	[Email] [nvarchar](30) NOT NULL,
+	[Salt] [UNIQUEIDENTIFIER] Null,
+	[Name] [varchar](50) Null,
+	[Email] [nvarchar](30) NULL,
+	[Organization] [varchar](30) NULL,
 	[CreatedDate] [datetime] NOT NULL,
 	[LastLoginDate] [datetime] NULL,
 	[RoleId] [INT] NULL FOREIGN KEY (RoleId) REFERENCES Roles(RoleId),
+	[LastUpdated] [DATETIME],
+	[LastUpdatedBy] [varchar](30),
+	[Image] [varchar](30),
 	
  CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
 (
