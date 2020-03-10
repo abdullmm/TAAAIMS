@@ -32,7 +32,7 @@
                                     </div>
                                     <br />
                                     <div class="form-group">
-                                        <asp:Button ID="btnCreate" runat="server" Text="Create Account" class="btn btn-warning form-control" OnClick="btnCreateAccount" Visible="false" CausesValidation="False"/>
+                                      <%--  <asp:Button ID="btnCreate" runat="server" Text="Create Account" class="btn btn-warning form-control" OnClick="btnCreateAccount" Visible="false" CausesValidation="False"/>--%>
                                     </div>
                                 </div>
                             </div>

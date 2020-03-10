@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Web.Security;
-using System.Configuration;
 
 public partial class OwnerSignUp : System.Web.UI.Page
 {
-    static String imagelink = "~/Files/personavatar.png";
-    static int userId = 0;
+    private SqlCommand cmd;
+    private static string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+    private SqlConnection con = new SqlConnection(constr);
+    private static String imagelink = "~/Files/personavatar.png";
+    private static int userId = 0;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         //if (!this.IsPostBack)
@@ -25,50 +23,73 @@ public partial class OwnerSignUp : System.Web.UI.Page
         //}
     }
 
-
     protected void btnCreate_Click(object sender, EventArgs e)
-    {       
+    {
+        cmd = new SqlCommand("select count(*) from users where @username=username",con);
+        cmd.Parameters.AddWithValue("@Username", txtUserName.Text);
+        con.Open();
+        int UserExist = (int)cmd.ExecuteScalar();
+        con.Close();
         string roles = string.Empty;
-        string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
-        SqlConnection conn = new SqlConnection(constr);
-        using (SqlConnection con = new SqlConnection(constr))
+
+        if (UserExist > 0)
         {
-            using (SqlCommand cmd = new SqlCommand("Insert_User"))
+            lblValid.Text = "Username already exists, please try again.";
+            lblValid.Visible = true;
+        }
+        else
+        {
+            cmd = new SqlCommand("select count(*) from users where @email=email",con);
+            cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+            con.Open();
+            int emailExist = (int)cmd.ExecuteScalar();
+            con.Close();
+            if (emailExist>0)
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = con;
-                con.Open();
-                cmd.Parameters.AddWithValue("@Username", txtUserName.Text);
-                cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
-                cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                cmd.Parameters.AddWithValue("@Role", 3);
-                cmd.Parameters.AddWithValue("@Image", imagelink);
-                cmd.ExecuteNonQuery();
-                con.Close();
+                lblValid.Text = "Email already already in use, please try again.";
                 lblValid.Visible = true;
-                lblValid.Text = "Your Account has been created successfully!";
-                btnLogin.Visible = true;
-            }           
-            SqlCommand find = new SqlCommand();
-            find.Connection = conn;
-            conn.Open();
-            find.CommandText = "select max(UserId) from [dbo].[Users]";
-            userId = Convert.ToInt32(find.ExecuteScalar());
-            Session["userId"] = userId;
-            conn.Close();
-            SqlCommand update = new SqlCommand();
-            update.Connection = conn;
-            conn.Open();
-            update.CommandText = "update [dbo].[Device] SET UserId = @userId where DeviceID = @deviceId";
-            update.Parameters.AddWithValue("@deviceId", (int)Session["deviceId"]);
-            update.Parameters.AddWithValue("@userId", (int)Session["userId"]);
-            update.ExecuteNonQuery();
-            conn.Close();
-        }   
+            }
+            else
+            {
+                using (cmd = new SqlCommand("Insert_User",con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.Parameters.AddWithValue("@Username", txtUserName.Text);
+                    cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
+                    cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
+                    cmd.Parameters.AddWithValue("@Role", 3);
+                    cmd.Parameters.AddWithValue("@Image", imagelink);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    lblValid.Visible = true;
+                    lblValid.Text = "Your Account has been created successfully!";
+                    txtEmail.Text = String.Empty;
+                    txtUserName.Text = String.Empty;
+                    btnLogin.Visible = true;
+                }
+                SqlCommand find = new SqlCommand();
+                find.Connection = con;
+                con.Open();
+                find.CommandText = "select max(UserId) from [dbo].[Users]";
+                userId = Convert.ToInt32(find.ExecuteScalar());
+                Session["userId"] = userId;
+                con.Close();
+                SqlCommand update = new SqlCommand("update [dbo].[Device] SET UserId = @userId where DeviceID = @deviceId",con);
+                update.Parameters.AddWithValue("@deviceId", (int)Session["deviceId"]);
+                update.Parameters.AddWithValue("@userId", (int)Session["userId"]);
+                con.Open();
+                update.ExecuteNonQuery();
+                con.Close();
+            }
+           
+        }
+
     }
 
     protected void btnLogin_Click(object sender, EventArgs e)
-    {       
+    {
         //find.CommandText = "select UserId from [dbo].[Users] where Username = @username and password = @Password";
         //find.Parameters.AddWithValue("@username", txtUserName.Text);
         //find.Parameters.AddWithValue("@password", txtPassword.Text);
@@ -81,7 +102,6 @@ public partial class OwnerSignUp : System.Web.UI.Page
         //}
         //else
         //{
-
         //}
         Response.Redirect("~/Login.aspx");
     }

@@ -20,7 +20,7 @@ public partial class ActivateUnit : System.Web.UI.Page
     protected void Activate_Click(object sender, EventArgs e)
     {
         conn.Open();
-        SqlCommand cmd = new SqlCommand("select ActivationCode from [dbo].[Device] where ActivationCode = @code and DeviceID = @id");
+        SqlCommand cmd = new SqlCommand("select ActivationCode from [dbo].[Device] where ActivationCode = @code and DeviceID = @id and userid is null");
         cmd.Connection = conn;
         cmd.Parameters.AddWithValue("@code", AccessCode.Text);
         cmd.Parameters.AddWithValue("@id", DeviceNumber.Text);
@@ -31,7 +31,8 @@ public partial class ActivateUnit : System.Web.UI.Page
             lblError.Visible = true;
             deviceId = Int32.Parse(DeviceNumber.Text);
             Session["deviceId"] = deviceId;
-            btnCreate.Visible = true;
+            //btnCreate.Visible = true;
+            Response.Redirect("OwnerSignUp.aspx");
         }
         else
         {
@@ -40,8 +41,8 @@ public partial class ActivateUnit : System.Web.UI.Page
         }
     }
 
-    protected void btnCreateAccount(object sender, EventArgs e)
-    {
-        Response.Redirect("OwnerSignUp.aspx");
-    }
+    //protected void btnCreateAccount(object sender, EventArgs e)
+    //{
+    //    Response.Redirect("OwnerSignUp.aspx");
+    //}
 }
