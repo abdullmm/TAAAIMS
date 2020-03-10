@@ -1,32 +1,16 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeFile="Project.aspx.cs" Inherits="Owner_Project" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeFile="Project.aspx.cs" Inherits="Project" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <link href="/Shared/mycustom.css" rel="stylesheet" type="text/css" media="screen" />
     <style type="text/css">
-       .margin-top {
-  margin-top: 10px;
-}
-.block1 {
-  height: 50em;
-  background-color: white;
-  border: 10px solid #292b2c;
-}
-.empty-block {
-  height: 150px;
-}
-.block2 { 
-  height: 25em;
-  background-color: white;
-  border: 10px solid #292b2c;
-  
-}
-/*#6c757d*/
-
-body {
-  background-color: #292b2c;
-}
+    .block2 
+    {
+    height: 25em;
+    background-color: white;
+    border: 10px solid #292b2c;
+    }
     </style>
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 <div class="bg-dark">
 <div class="container-fluid">
@@ -66,17 +50,11 @@ body {
         Projects associated: 1
         More info…
         </div>
-        
-        
 
     </div>
     
   </div>
 </div>
-    </div>
-    <script src ="Scripts/jquery-3.0.0.min.js"></script>
-    <script src ="Scripts/bootstrap.min.js"></script>
-    <script src ="Scripts/popper.min.js"></script>
+</div>
 </asp:Content>
-    
 

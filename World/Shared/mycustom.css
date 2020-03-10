@@ -4,18 +4,15 @@
 
 .block1 {
     height: 50em;
-    border: 15px solid #292b2c;
+    border: 10px solid #292b2c;
 }
 
 .block2 {
-    height: 150px;
+    height: 25em;
     background-color: white;
-    border: 7px solid #292b2c;
+    border: 10px solid #292b2c;
 }
 /*#6c757d*/
-.grey1 {
-    background-color: #6c757d;
-}
 
 body {
     background-color: #292b2c;
@@ -75,3 +72,8 @@ body {
     width: 30%;
 }
 
+.block2 {
+    height: 25em;
+    background-color: white;
+    border: 10px solid #292b2c;
+}

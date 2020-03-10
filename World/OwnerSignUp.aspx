@@ -15,56 +15,72 @@
                                 <div id="form" class="justify-content-center">
                                     <div align="center">
                                         <fieldset>              
-                                          <p align="center" class="text-uppercase text-orange"><b>Account Sign Up:</b></p>
-                                            <div class="form-group row">
-                                                <div class="col-sm-8">                                                
-                                                    <asp:TextBox ID="txtEmail" runat="server" class="form-control" placeholder="Email Address"></asp:TextBox>
-                                                </div>
-                                                <div class="col-sm-4">                                                
-                                                    <asp:RequiredFieldValidator ID="require1" runat="server" ErrorMessage="(Required)" ControlToValidate="txtEmail"></asp:RequiredFieldValidator>
-                                                </div>
+                                    <p align="center" class="text-uppercase text-orange"><b>Account Sign Up:</b></p>  
+                                    <div class="form-group">
+                                        <div class="form-row">
+                                            <div class="col-sm-1">
                                             </div>
-                                            <div class="form-group row">
-                                                <div class="col-sm-8">                                                
-                                                    <asp:TextBox ID="txtUserName" runat="server" class="form-control input-lg" placeholder="Username"></asp:TextBox>
-                                                </div>
-                                                <div class="col-sm-4">                                                
-                                                    <asp:RequiredFieldValidator ID="userNameRequired" runat="server" ControlToValidate="txtUserName" ErrorMessage="(Required)" ToolTip="User Name is required."></asp:RequiredFieldValidator>
-                                                </div>
+                                            <div class="col-sm-10">
+                                                <asp:TextBox ID="txtEmail" runat="server" class="form-control" placeholder="Email Address"></asp:TextBox>                                                 
+                                            </div> 
+                                            <div class="col-sm-1">
+                                                <asp:RequiredFieldValidator ID="require1" runat="server" ErrorMessage="*" ControlToValidate="txtEmail"></asp:RequiredFieldValidator>
                                             </div>
-                                           <div class="form-group row">
-                                                <div class="col-sm-8">                                                
-                                                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" class="form-control input-lg" placeholder="Password"></asp:TextBox>
-                                                </div>
-                                                <div class="col-sm-4">                                                
-                                                    <asp:RequiredFieldValidator ID="passwordRequired" runat="server" ControlToValidate="txtPassword" ErrorMessage="(Required)" ToolTip="Password is required." ></asp:RequiredFieldValidator>
-                                                    
-                                                </div>
-                                          </div>
-                                          <div class="form-group row">
-                                                <div class="col-sm-8">                                                
-                                                    <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" class="form-control input-lg" placeholder=" Confirm Password"></asp:TextBox>
-                                                </div>
-                                                <div class="col-sm-4">                                                
-                                                    <asp:RequiredFieldValidator ID="require3" runat="server" ControlToValidate="txtConfirmPassword" ErrorMessage="(Required)" ToolTip="Password is required." ></asp:RequiredFieldValidator>
-                                                </div>  
-                                          </div>  
-                                          <div class="form-group">
-                                              <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtPassword" ID="MyPassordMinLengthValidator" ValidationExpression="^[\s\S]{8,}$" runat="server" ErrorMessage="Password must be at least 8 characters long."></asp:RegularExpressionValidator>
-                                              <!-- Add validator for minimum required characters -->
-                                              <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtPassword" ID="MyPassordRequiredCharacterValidator" ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$" runat="server" ErrorMessage="Must contain at least one uppercase letter, one lowercase letter, and one number."></asp:RegularExpressionValidator>
-                                              <asp:Label ID="lblValid" runat="server" Text="Your Account has been created successfully!" Visible="false"></asp:Label>
-                                          </div>  
-                                          <div class="form-group" align="center">
-                                                <%--<asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>--%>
-                                                <asp:Button ID="btnCreate" runat="server" CommandName="create" Text="Create Account" class="btn btn-warning" OnClick="btnCreate_Click" />
-                                                
-                                          </div>
-                                            <div class="form-group" align="center">
-                                                <asp:Button ID="btnLogin" runat="server" CommandName="login" Text="Login Page" class="btn btn-warning" OnClick="btnLogin_Click" Visible="false" CausesValidation="False"/>
-                                                <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
-                                            </div>                                           
-                                        </fieldset>     
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                       <div class="form-row">
+                                            <div class="col-sm-1">
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <asp:TextBox ID="txtUserName" runat="server" class="form-control" placeholder="Username"></asp:TextBox>                                                                                                  
+                                            </div> 
+                                            <div class="col-sm-1">
+                                                <asp:RequiredFieldValidator ID="userNameRequired" runat="server" ControlToValidate="txtUserName" ErrorMessage="*" ToolTip="User Name is required."></asp:RequiredFieldValidator> 
+                                            </div>
+                                       </div>
+                                     </div>
+                                     <div class="form-group">
+                                        <div class="form-row">
+                                            <div class="col-sm-1">
+                                            </div>
+                                            <div class="col-sm-10">
+                                            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" class="form-control" placeholder="Password"></asp:TextBox>                                                  
+                                            </div> 
+                                            <div class="col-sm-1">
+                                                <asp:RequiredFieldValidator ID="passwordRequired" runat="server" ControlToValidate="txtPassword" ErrorMessage="*" ToolTip="Password is required." ></asp:RequiredFieldValidator>                              
+                                            </div>
+                                        </div>
+                                     </div>
+                                     <div class="form-group">
+                                        <div class="form-row">
+                                            <div class="col-sm-1">
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" class="form-control" placeholder=" Confirm Password"></asp:TextBox>                                                                                                   
+                                            </div> 
+                                            <div class="col-sm-1">
+                                                <asp:RequiredFieldValidator ID="require3" runat="server" ControlToValidate="txtConfirmPassword" ErrorMessage="*" ToolTip="Password is required." ></asp:RequiredFieldValidator>   
+                                            </div>
+                                        </div>
+                                      </div>                                         
+                                    <div class="form-group">    
+                                        <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtPassword" ID="MyPassordMinLengthValidator" ValidationExpression="^[\s\S]{8,}$" runat="server" ErrorMessage="Password must be at least 8 characters long."></asp:RegularExpressionValidator>
+                                        <!-- Add validator for minimum required characters -->
+                                        <br />
+                                        <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtPassword" ID="MyPassordRequiredCharacterValidator" ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$" runat="server" ErrorMessage="Must contain at least one uppercase letter, one lowercase letter, and one number."></asp:RegularExpressionValidator>
+                                        <asp:Label ID="lblValid" runat="server" Text="Your Account has been created successfully!" Visible="false"></asp:Label>
+                                        </div>  
+                                    <div class="form-group" align="center">
+                                        <asp:CompareValidator ID="passwordCompare" runat="server" ErrorMessage="Passwords must match" ControlToValidate="txtPassword" ControlToCompare="txtConfirmPassword" Operator="Equal"></asp:CompareValidator>
+                                        <%--<asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>--%>     
+                                    </div>
+                                    <div class="form-group" align="center">
+                                        <asp:Button ID="btnCreate" runat="server" CommandName="create" Text="Create Account" class="btn btn-warning" OnClick="btnCreate_Click" />
+                                        <br />
+                                        <asp:Button ID="btnLogin" runat="server" CommandName="login" Text="Login Page" class="btn btn-warning" OnClick="btnLogin_Click" Visible="false" CausesValidation="False"/>
+                                    </div>                                           
+                                    </fieldset>     
                                     </div>        
                                 </div>
                             </div>
