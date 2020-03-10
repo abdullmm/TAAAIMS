@@ -57,7 +57,7 @@ public partial class ResetPassword : System.Web.UI.Page
         StringBuilder sbEmailBody = new StringBuilder();
         sbEmailBody.Append("Dear " + UserName + ",<br/><br/>");
         sbEmailBody.Append("Please click on the following link to reset your password");
-        sbEmailBody.Append("<br/>"); sbEmailBody.Append("http://animalworld.us-east-1.elasticbeanstalk.com/ResetPassword.aspx?uid=" + UniqueId);
+        sbEmailBody.Append("<br/>"); sbEmailBody.Append("http://animalworld.us-east-1.elasticbeanstalk.com/NewPassword.aspx?uid=" + UniqueId);
         sbEmailBody.Append("<br/><br/>");
         sbEmailBody.Append("<b>Pragim Technologies</b>");
 
