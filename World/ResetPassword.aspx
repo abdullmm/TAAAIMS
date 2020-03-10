@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<div class="text-center bg-dark">
+    <div class="text-center bg-dark">
         <div class="row d-flex justify-content-center">
             <div class="col-md-6">
                 <div id="cover" class="min-vh-100 bg-dark">
