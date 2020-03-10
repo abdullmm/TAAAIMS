@@ -32,6 +32,7 @@ public partial class OwnerSignUp : System.Web.UI.Page
         con.Close();
         string roles = string.Empty;
 
+        // Username check
         if (UserExist > 0)
         {
             lblValid.Text = "Username already exists, please try again.";
@@ -39,6 +40,7 @@ public partial class OwnerSignUp : System.Web.UI.Page
         }
         else
         {
+            // Email check
             cmd = new SqlCommand("select count(*) from users where @email=lower(email)",con);
             cmd.Parameters.AddWithValue("@email", txtEmail.Text.ToLower());
             con.Open();
@@ -51,6 +53,7 @@ public partial class OwnerSignUp : System.Web.UI.Page
             }
             else
             {
+                // Inserts newly created Owner account into database
                 using (cmd = new SqlCommand("Insert_User",con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -96,19 +99,7 @@ public partial class OwnerSignUp : System.Web.UI.Page
 
     protected void btnLogin_Click(object sender, EventArgs e)
     {
-        //find.CommandText = "select UserId from [dbo].[Users] where Username = @username and password = @Password";
-        //find.Parameters.AddWithValue("@username", txtUserName.Text);
-        //find.Parameters.AddWithValue("@password", txtPassword.Text);
-
-        //SqlDataReader reader = find.ExecuteReader();
-        //if (reader != null && reader.HasRows)
-        //{
-        //    userId = Convert.ToInt32(reader["UserId"]);
-        //    Session["userId"] = userId;
-        //}
-        //else
-        //{
-        //}
+        // Redirects to Login page 
         Response.Redirect("~/Login.aspx");
     }
 }
