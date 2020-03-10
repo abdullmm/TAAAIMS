@@ -25,8 +25,8 @@ public partial class OwnerSignUp : System.Web.UI.Page
 
     protected void btnCreate_Click(object sender, EventArgs e)
     {
-        cmd = new SqlCommand("select count(*) from users where @username=username",con);
-        cmd.Parameters.AddWithValue("@Username", txtUserName.Text);
+        cmd = new SqlCommand("select count(*) from users where @username=lower(username)",con);
+        cmd.Parameters.AddWithValue("@Username", txtUserName.Text.ToLower());
         con.Open();
         int UserExist = (int)cmd.ExecuteScalar();
         con.Close();
@@ -39,8 +39,8 @@ public partial class OwnerSignUp : System.Web.UI.Page
         }
         else
         {
-            cmd = new SqlCommand("select count(*) from users where @email=email",con);
-            cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+            cmd = new SqlCommand("select count(*) from users where @email=lower(email)",con);
+            cmd.Parameters.AddWithValue("@email", txtEmail.Text.ToLower());
             con.Open();
             int emailExist = (int)cmd.ExecuteScalar();
             con.Close();
@@ -65,23 +65,29 @@ public partial class OwnerSignUp : System.Web.UI.Page
                     con.Close();
                     lblValid.Visible = true;
                     lblValid.Text = "Your Account has been created successfully!";
-                    txtEmail.Text = String.Empty;
-                    txtUserName.Text = String.Empty;
                     btnLogin.Visible = true;
                 }
-                SqlCommand find = new SqlCommand();
-                find.Connection = con;
+
+
+
+                //get the id of the user you just inserted
+                cmd = new SqlCommand("select userid from users where @email=lower(email)", con);
+                cmd.Parameters.AddWithValue("@email", txtEmail.Text.ToLower());
                 con.Open();
-                find.CommandText = "select max(UserId) from [dbo].[Users]";
-                userId = Convert.ToInt32(find.ExecuteScalar());
+                userId = (int)cmd.ExecuteScalar();
                 Session["userId"] = userId;
                 con.Close();
+
+                //set the userid to the specific box.
                 SqlCommand update = new SqlCommand("update [dbo].[Device] SET UserId = @userId where DeviceID = @deviceId",con);
                 update.Parameters.AddWithValue("@deviceId", (int)Session["deviceId"]);
                 update.Parameters.AddWithValue("@userId", (int)Session["userId"]);
                 con.Open();
                 update.ExecuteNonQuery();
                 con.Close();
+
+                txtEmail.Text = String.Empty;
+                txtUserName.Text = String.Empty;
             }
            
         }
