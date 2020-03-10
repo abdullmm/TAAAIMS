@@ -30,7 +30,7 @@
                                                             <asp:Button ID="resetPassBtn" runat="server" CommandName="Reset" Text="Reset Password"  class="btn btn-warning" OnClick="resetPassBtn_Click" />
                                                         </div>
                                                         <div class="form-group" align="center">
-                                                            <asp:Label ID="lblMessage" runat="server" Text="Label"></asp:Label>
+                                                            <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
                                                         </div>
 <%--                                                        <div class="form-group" align="center">
                                                             <p align="center">

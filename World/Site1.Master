@@ -58,6 +58,9 @@
             /*font-weight: bold;*/
             font-size: 20px;
             text-decoration: none;
+            border: none;
+            padding: 0;
+            background: none;
         }
 
 
@@ -73,16 +76,33 @@
     </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav" >
             <div class="nav navbar-nav">
-                <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false" SiteMapProvider="SiteMap"/>
-                <asp:Menu ID="MenuBar" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" RenderingMode="List"
-                OnMenuItemDataBound="OnMenuItemDataBound" StaticMenuStyle-CssClass="nav navbar-nav" DynamicMenuStyle-CssClass="dropdown-menu" StaticSelectedStyle-CssClass="nav-item active">
-                <LevelMenuItemStyles>
-                    <asp:MenuItemStyle CssClass="menu" />
+               <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false" SiteMapProvider="SiteMap"/>
+               <asp:Menu ID="MenuBar" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" RenderingMode="List"
+               OnMenuItemDataBound="OnMenuItemDataBound" StaticMenuStyle-CssClass="nav navbar-nav" DynamicMenuStyle-CssClass="dropdown-menu" StaticSelectedStyle-CssClass="nav-item active"
+               StaticMenuItemStyle-CssClass="nav-item" statichoverstyle-CssClass="">
+               <LevelMenuItemStyles>
+               <asp:MenuItemStyle CssClass="menu" />
+               
 
                </LevelMenuItemStyles>
                <StaticHoverStyle />
                <StaticSelectedStyle />                                     
+               <Items>
+                       <asp:MenuItem Text="Home" ToolTip="Home">  </asp:MenuItem>
+                           <asp:MenuItem Text="Music" ToolTip="Music">
+                               <asp:MenuItem Text="Classical" ToolTip="Classical" />
+                               <asp:MenuItem Text="Rock" ToolTip="Rock" />
+                               <asp:MenuItem Text="Jazz" ToolTip="Jazz" />
+                           </asp:MenuItem>
+                           <asp:MenuItem Text="Movies" ToolTip="Movies">
+                               <asp:MenuItem Text="Action" ToolTip="Action" />
+                               <asp:MenuItem Text="Drama" ToolTip="Drama" />
+                               <asp:MenuItem Text="Musical" ToolTip="Musical" />
+                           </asp:MenuItem>
+                      
+               </Items>
                </asp:Menu>
+
                <asp:LoginView ID="LoginView" runat="server">
                <AnonymousTemplate>
                     <%--<asp:LoginName ID="LoginName1" runat="server" Font-Bold="true" />--%>
@@ -108,12 +128,62 @@
                      <RoleGroups>
                         <asp:RoleGroup Roles="Owner">
                             <ContentTemplate>
-                                <a href="Home.aspx" class="menu">Home</a>
-                                <a href="Purchase.aspx" class="menu">Purchase</a>
-                                <a href="AddUnit.aspx" class="menu">Add Unit</a>
-                                <a href="Contact.aspx" class="menu">Forum</a>
-                                <a href="MyAccount.aspx" class="menu">My Account</a>
-                                <asp:LoginStatus ID="LoginStatus1" runat="server" CssClass="menu" LogoutAction="Redirect" LogoutPageUrl="/Home.aspx"/>
+                                <asp:Menu ID="MenuBar" runat="server" Orientation="Horizontal" RenderingMode="List" 
+                OnMenuItemDataBound="OnMenuItemDataBound" StaticMenuStyle-CssClass="nav navbar-nav" DynamicMenuStyle-CssClass="dropdown-menu" StaticSelectedStyle-CssClass="nav-item active"
+                StaticMenuItemStyle-CssClass="nav-item" StaticHoverStyle-CssClass="active" DynamicHoverStyle-CssClass="active">
+                <LevelMenuItemStyles>
+                <asp:MenuItemStyle CssClass="menu" />
+                <asp:MenuItemStyle CssClass="menu" />
+
+                </LevelMenuItemStyles>
+                <StaticSelectedStyle />                                     
+                <Items>
+                <asp:MenuItem Text="Home" ToolTip="Home" navigateurl="Home.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="About" ToolTip="About" navigateurl="Contact.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Devices" ToolTip="Devices">
+                    <asp:MenuItem Text="Purchase" ToolTip="Purchase" navigateurl="Purchase.aspx"/>
+                    <asp:MenuItem Text="My Devices" ToolTip="My Devices" navigateurl="AddUnit.aspx"/>                  
+                </asp:MenuItem>
+                <asp:MenuItem Text="Movies" ToolTip="Movies">
+                <asp:MenuItem Text="Action" ToolTip="Action" navigateurl="Home.aspx"/>
+                <asp:MenuItem Text="Drama" ToolTip="Drama" />
+                <asp:MenuItem Text="Music" ToolTip="Musical" />
+                </asp:MenuItem>
+                <asp:MenuItem Text="My Account" ToolTip="My Account" navigateurl="MyAccount.aspx"></asp:MenuItem>
+                </Items>
+                </asp:Menu>
+                <asp:LoginStatus ID="LoginStatus1" runat="server" CssClass="menu nav-item" LogoutAction="Redirect" LogoutPageUrl="/Home.aspx"/>
+                                <%--<asp:LoginName id="LoginName2" runat="Server"></asp:LoginName>, you
+                                are logged in as an Owner.--%>
+                            </ContentTemplate>
+                        </asp:RoleGroup>
+                         <asp:RoleGroup Roles="User">
+                            <ContentTemplate>
+                                <asp:Menu ID="MenuBar" runat="server" Orientation="Horizontal" RenderingMode="List" 
+                OnMenuItemDataBound="OnMenuItemDataBound" StaticMenuStyle-CssClass="nav navbar-nav" DynamicMenuStyle-CssClass="dropdown-menu" StaticSelectedStyle-CssClass="nav-item active"
+                StaticMenuItemStyle-CssClass="nav-item" StaticHoverStyle-CssClass="active" DynamicHoverStyle-CssClass="active">
+                <LevelMenuItemStyles>
+                <asp:MenuItemStyle CssClass="menu" />
+                <asp:MenuItemStyle CssClass="menu" />
+
+                </LevelMenuItemStyles>
+                <StaticSelectedStyle />                                     
+                <Items>
+                <asp:MenuItem Text="Home" ToolTip="Home" navigateurl="Home.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="About" ToolTip="About" navigateurl="Contact.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Devices" ToolTip="Devices">
+                    <asp:MenuItem Text="Purchase" ToolTip="Purchase" navigateurl="Purchase.aspx"/>
+                    <asp:MenuItem Text="My Devices" ToolTip="My Devices" navigateurl="AddUnit.aspx"/>                  
+                </asp:MenuItem>
+                <asp:MenuItem Text="Movies" ToolTip="Movies">
+                <asp:MenuItem Text="Action" ToolTip="Action" navigateurl="Home.aspx"/>
+                <asp:MenuItem Text="Drama" ToolTip="Drama" />
+                <asp:MenuItem Text="Music" ToolTip="Musical" />
+                </asp:MenuItem>
+                <asp:MenuItem Text="My Account" ToolTip="My Account" navigateurl="MyAccount.aspx"></asp:MenuItem>
+                </Items>
+                </asp:Menu>
+                <asp:LoginStatus ID="LoginStatus1" runat="server" CssClass="menu nav-item" LogoutAction="Redirect" LogoutPageUrl="/Home.aspx"/>
                                 <%--<asp:LoginName id="LoginName2" runat="Server"></asp:LoginName>, you
                                 are logged in as an Owner.--%>
                             </ContentTemplate>
