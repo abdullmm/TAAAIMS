@@ -1,62 +1,69 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link rel="icon" href="/images/icon.png" type="image/x-icon" />
     <link href="/Shared/mycustom.css" rel="stylesheet" type="text/css" media="screen" />
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<div class="text-center bg-dark">
-<div class="row d-flex justify-content-center">
-<div class="col-md-6">
-<div id="cover" class="min-vh-100 bg-dark">
-<%--<div id="cover-caption">--%>
-<div class="container">
-<div class="row">
-<div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4 bg-white">
-<h2 class="text-center" id="title"><img src="/images/logocrop.png" alt="logocopy" runat="server" id="logo" class="teamLogo"/></h2>
- <%--class="display-4 py-2"--%>
-<%-- <p>  Account Login</p>--%>
-<div class="px-2 ">
-<div id="form" class="justify-content-center"> 
-<div align="center"> 
-       <asp:Login ID="Login1" runat="server" OnAuthenticate="ValidateUser" >
-        <LayoutTemplate >  
-            <fieldset>              
-              <p align="center" class="text-uppercase"> Account Login: </p> 
-              <div class="form-group">
-                 <asp:TextBox ID="UserName" runat="server" class="form-control input-lg" placeholder="Username"></asp:TextBox>
-                 <%--<asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="User Name is required." ToolTip="User Name is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>--%>
-              </div>
-              <div class="form-group">
-                <asp:TextBox ID="Password" runat="server" TextMode="Password" class="form-control input-lg" placeholder="Password"></asp:TextBox>
-                <%--<asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>--%>
-              </div>
-              <div class="form-group" align="center">
-                    <%--<asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>--%>
-                    <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" ValidationGroup="Login1" class="btn btn-warning" />
-              </div>
-              <div class="form-group" align="center">
-                  <p align="center"> Not a Device Owner or Registered User? <br />
-                      Create an account after activating a Device
-                  </p>
-                   <asp:Button ID="btnLink" runat="server"  Text="Activate A Device" class="btn btn-warning" OnClick="btnLink_Click" />
-              </div>  
-            </fieldset>
-        </LayoutTemplate>            
-    </asp:Login>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<%--    </div>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <div class="text-center bg-dark">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <div id="cover" class="min-vh-100 bg-dark">
+                    <%--<div id="cover-caption">--%>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4 bg-white">
+                                <h2 class="text-center" id="title">
+                                    <img src="/images/logocrop.png" alt="logocopy" runat="server" id="logo" class="teamLogo" /></h2>
+                                <%--class="display-4 py-2"--%>
+                                <%-- <p>  Account Login</p>--%>
+                                <div class="px-2 ">
+                                    <div id="form" class="justify-content-center">
+                                        <div align="center">
+                                            <asp:Login ID="Login1" runat="server" OnAuthenticate="ValidateUser">
+                                                <LayoutTemplate>
+                                                    <fieldset>
+                                                        <p align="center" class="text-uppercase">Account Login: </p>
+                                                        <div class="form-group">
+                                                            <asp:TextBox ID="UserName" runat="server" class="form-control input-lg" placeholder="Username"></asp:TextBox>
+                                                            <%--<asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="User Name is required." ToolTip="User Name is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>--%>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <asp:TextBox ID="Password" runat="server" TextMode="Password" class="form-control input-lg" placeholder="Password"></asp:TextBox>
+                                                            <%--<asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>--%>
+                                                        </div>
+                                                        <div class="form-group">
+                                                           <a href="ResetPassword.aspx">Forgot Password?</a>
+                                                            <%--<asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>--%>
+                                                        </div>
+                                                        <div class="form-group" align="center">
+                                                            <%--<asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>--%>
+                                                            <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" ValidationGroup="Login1" class="btn btn-warning" />
+                                                        </div>
+                                                        <div class="form-group" align="center">
+                                                            <p align="center">
+                                                                Not a Device Owner or Registered User?
+                                                                <br />
+                                                                Create an account after activating a Device
+                                                            </p>
+                                                            <asp:Button ID="btnLink" runat="server" Text="Activate A Device" class="btn btn-warning" OnClick="btnLink_Click" />
+                                                        </div>
+                                                    </fieldset>
+                                                </LayoutTemplate>
+                                            </asp:Login>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%--    </div>
 </div>--%>
-</div>
-</div>
-</div>                
-            <%--<table cellpadding="1" cellspacing="0" style="border-collapse:collapse;">
+            </div>
+        </div>
+    </div>
+    <%--<table cellpadding="1" cellspacing="0" style="border-collapse:collapse;">
                 <tr>
                     <td>
                         <table cellpadding="0">
@@ -99,6 +106,5 @@
                         </table>
                     </td>
                 </tr>
-            </table>--%> 
+            </table>--%>
 </asp:Content>
-
