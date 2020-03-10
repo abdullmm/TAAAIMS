@@ -26,6 +26,7 @@ public partial class OwnerSignUp : System.Web.UI.Page
         con.Close();
         string roles = string.Empty;
 
+        // Username check
         if (UserExist > 0)
         {
             lblValid.Text = "Username already exists, please try again.";

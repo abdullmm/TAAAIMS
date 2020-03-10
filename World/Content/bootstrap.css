@@ -3233,6 +3233,7 @@ input[type="button"].btn-block {
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
+  content: none;
 }
 
 .dropdown-menu-left {

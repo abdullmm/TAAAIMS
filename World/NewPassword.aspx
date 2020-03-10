@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeFile="ResetPassword.aspx.cs" Inherits="ResetPassword"   %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeFile="NewPassword.aspx.cs" Inherits="NewPassword" %>
 
 
 
@@ -17,20 +17,19 @@
                                 <div class="px-2 ">
                                     <div id="form" class="justify-content-center">
                                         <div align="center">
-                                           <%-- <LayoutTemplate>--%>
                                                     <fieldset>
                                                         <p align="center" class="text-uppercase">Password Reset: </p>
                                                         <div class="form-group">
-                                                            <asp:TextBox ID="txtUserName" runat="server" class="form-control input-lg" placeholder="Username"></asp:TextBox>
+                                                            <asp:TextBox ID="txtPassword" runat="server" class="form-control input-lg" placeholder="password"></asp:TextBox>
                                                         </div>
-<%--                                                        <div class="form-group">
-                                                            <asp:TextBox ID="Password" runat="server" TextMode="Password" class="form-control input-lg" placeholder="Password"></asp:TextBox>
-                                                        </div>--%>
-                                                        <div class="form-group" align="center">
-                                                            <asp:Button ID="resetPassBtn" runat="server" CommandName="Reset" Text="Reset Password"  class="btn btn-warning" OnClick="resetPassBtn_Click" />
+                                                        <div class="form-group">
+                                                            <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" class="form-control input-lg" placeholder="Confirm Password"></asp:TextBox>
                                                         </div>
                                                         <div class="form-group" align="center">
-                                                            <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
+                                                            <asp:Button ID="resetPassBtn" runat="server" CommandName="Reset" Text="Reset Password"  class="btn btn-warning" OnClick="resetPassBtn_Click"  />
+                                                        </div>
+                                                        <div class="form-group" align="center">
+                                                            <asp:Label ID="lblMessage" runat="server" Text="Label"></asp:Label>
                                                         </div>
 <%--                                                        <div class="form-group" align="center">
                                                             <p align="center">
@@ -40,8 +39,6 @@
                                                             </p>
                                                         </div>--%>
                                                     </fieldset>
-                                               <%-- </LayoutTemplate>--%>
-                                          
                                         </div>
                                     </div>
                                 </div>
