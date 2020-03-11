@@ -49,3 +49,24 @@ Create table Project
 [LastUpdatedBy] [varchar](30)
 )
 
+GO
+CREATE PROCEDURE [dbo].[grid_Bind]
+@userId int 
+
+AS
+BEGIN
+SELECT [DeviceID], [Nickname], [Bluetooth],
+[Wifi],
+[MediaMode],
+[IntervalDelay],
+[VideoDuration],
+[NumberImages],
+[WgtUnit],
+[BattLife],
+[Latitude],
+[Longitude]
+FROM TeamOwner INNER JOIN Device ON TeamOwner.UserId = Device.OwnerID 
+WHERE(TeamOwner.UserId = @userId)
+END
+
+GO

@@ -38,7 +38,7 @@
                     <asp:BoundField HeaderText="Longitude" DataField="Longitude" SortExpression="Longitude" /> 
                 </Columns> 
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:constr %>" SelectCommand="grid_Bind" SelectCommandType="StoredProcedure">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:constr %>" SelectCommand="device_Bind" SelectCommandType="StoredProcedure">
                 <SelectParameters>
                     <asp:SessionParameter Name="userId" SessionField="userId" Type="Int32" />
                 </SelectParameters>

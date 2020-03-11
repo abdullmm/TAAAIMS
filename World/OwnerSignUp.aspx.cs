@@ -47,7 +47,7 @@ public partial class OwnerSignUp : System.Web.UI.Page
             }
             else
             {
-                //Creates account
+                //Creates account in user table
                 using (cmd = new SqlCommand("Insert_User",con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -72,7 +72,7 @@ public partial class OwnerSignUp : System.Web.UI.Page
                 Session["userId"] = userId;
                 con.Close();
 
-                //creates owner given the user id
+                //creates owner in owner table 
                 SqlCommand create = new SqlCommand("insert [dbo].[TeamOwner] (UserId) values @userId");
                 cmd.Parameters.AddWithValue("@userId", (int)Session["userId"]);
                 create.Connection = con;

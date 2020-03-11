@@ -40,7 +40,7 @@
                 <h3 align="center">My Devices</h3>
                 <br />
                 <asp:DropDownList ID="deviceList" runat="server" DataSourceID="deviceListDataSource" DataTextField="Nickname" DataValueField="DeviceID"></asp:DropDownList>
-                <asp:SqlDataSource ID="deviceListDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:constr %>" SelectCommand="grid_Bind" SelectCommandType="StoredProcedure">
+                <asp:SqlDataSource ID="deviceListDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:constr %>" SelectCommand="device_Bind" SelectCommandType="StoredProcedure">
                     <SelectParameters>
                         <asp:SessionParameter Name="userId" SessionField="userId" Type="Int32" />
                     </SelectParameters>

@@ -61,22 +61,21 @@ CREATE TABLE [dbo].[Users](
 ) ON [PRIMARY]
 
 Create table [dbo].[TeamOwner]
-([OwnerID] [int] IDENTITY(1,1) Primary Key,
-[UserId] [INT] NULL FOREIGN KEY (UserId) REFERENCES Users(UserId) ON UPDATE CASCADE,
+([UserId] [INT] Primary Key FOREIGN KEY (UserId) REFERENCES Users(UserId),
 [LastUpdated] [DATETIME],
 [LastUpdatedBy] [varchar](30)
 )
 
 Create table [dbo].[TeamMember]
-([MemberID] [int] IDENTITY(1,1) Primary Key,
-[UserId] [INT] NULL FOREIGN KEY (UserId) REFERENCES Users(UserId) ON UPDATE CASCADE,
+([UserId] [INT] Primary Key FOREIGN KEY (UserId) REFERENCES Users(UserId),
+[OwnerId] [INT] NULL FOREIGN KEY (OwnerId) REFERENCES TeamOwner(UserId),
 [LastUpdated] [DATETIME],
 [LastUpdatedBy] [varchar](30)
 )
 
 Create table [dbo].[Project] 
 ([ProjectId] [INT] IDENTITY(1,1) Primary Key,
-[OwnerId] [INT] NULL FOREIGN KEY (OwnerId) REFERENCES TeamOwner(OwnerId) ON UPDATE CASCADE,
+[OwnerId] [INT] NULL FOREIGN KEY (OwnerId) REFERENCES TeamOwner(UserId),
 [ProjectName] [varchar](20),
 [LastUpdated] [DATETIME],
 [LastUpdatedBy] [varchar](30)
@@ -96,7 +95,7 @@ Create table Device
 [BattLife] [Int],
 [Latitude] [Decimal](12, 10),
 [Longitude] [Decimal](12, 10),
-[OwnerID] [INT] NULL FOREIGN KEY (OwnerID) REFERENCES TeamOwner(OwnerID),
+[OwnerID] [INT] NULL FOREIGN KEY (OwnerID) REFERENCES TeamOwner(UserId),
 [ProjectId] [INT] NULL FOREIGN KEY (ProjectId) REFERENCES Project(ProjectId)
 )
 
@@ -202,24 +201,6 @@ BEGIN
 		SELECT SCOPE_IDENTITY() -- UserId			   
      END
 END
-
-
-
-/* Table [dbo].[UserActivation] */
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[UserActivation](
-	[UserId] [int] NOT NULL,
-	[ActivationCode] [uniqueidentifier] NOT NULL,
- CONSTRAINT [PK_UserActivation] PRIMARY KEY CLUSTERED 
-(
-	[UserId] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
 
 GO
 CREATE  PROCEDURE [dbo].[Validate_User]
