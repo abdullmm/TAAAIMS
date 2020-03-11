@@ -5,56 +5,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>--%>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Adventure Works SalesPerson Dashboard</title>
-    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDksEnZmFtaehIf5sQFG5GWe0wsefuR2gU"></script>
     <script type="text/javascript">
-        google.load('visualization', '1', { packages: ['corechart', 'table'] });
+        var markers = [
+            <asp:Repeater ID="rptMarkers" runat="server">
+        <ItemTemplate>
+            {
+            "title": '<%# Eval("NickName") %>',
+            "lat": '<%# Eval("Latitude") %>',
+            "lng": '<%# Eval("Longitude") %>'
+           
+            }
+        </ItemTemplate>
+        <SeparatorTemplate>
+            ,
+        </SeparatorTemplate>
+    </asp:Repeater>
+        ];
     </script>
     <script type="text/javascript">
-
-	// this gets it all started
-	google.setOnLoadCallback(drawWebPage);
-
-
-        // query connection string to Google spreadsheet
-	var queryConnectionString =  "https://docs.google.com/spreadsheets/d/10Xwod9RGBsPGIZjkWYn4EIjfMFB3U8iD6fH5jARg3-k/edit?usp=sharing";
-
-	// data tables (contain results of queries)
-
-	var dataTable3;
-
-	// map
-	var map;
-
-	function drawWebPage() {
-
-		sendQuery();
-
-	}
-
-	function sendQuery(){
-		// query for salespeople
-		var query = new google.visualization.Query(queryConnectionString);
-		query.setQuery("SELECT A, B, C limit 14");
-		query.send(onQuery1Response);
-
-
-	}
-
-	function onQuery1Response(response) {
- // error-handling code
-		if (response.isError()) {
-		  alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-		  return;
-		}
-
-		
-		          // create a map
-          map = new google.maps.Map(document.getElementById('container3'), {
-              mapTypeId: google.maps.MapTypeId.ROADMAP,
-              zoom: 6,
-                            styles: [
+        window.onload = function () {
+            var mapOptions = {
+                center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+                zoom: 8,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                 styles: [
   {
     "elementType": "geometry",
     "stylers": [
@@ -241,13 +216,27 @@
     ]
   }
 ]
-          });
-          // create a LatLng object (latitude and longitude values)
-          var latlng = new google.maps.LatLng(38.5, -78.9);
-          // center the map at the lat/lng location (centered at Harrisonburg)
-          map.setCenter(latlng);
-	}
+            };
+            var infoWindow = new google.maps.InfoWindow();
+            var map = new google.maps.Map(document.getElementById("container3"), mapOptions);
+            for (i = 0; i < markers.length; i++) {
+                var data = markers[i]
+                var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    title: data.title
+                });
+                (function (marker, data) {
+                    google.maps.event.addListener(marker, "click", function (e) {
+                        infoWindow.setContent(data.description);
+                        infoWindow.open(map, marker);
+                    });
+                })(marker, data);
+            }
+        }
     </script>
+
 <%--</head>
     </html>--%>
     <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
