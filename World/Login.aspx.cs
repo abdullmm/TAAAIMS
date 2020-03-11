@@ -26,6 +26,7 @@ public partial class Login : System.Web.UI.Page
                 FormsAuthentication.SignOut();
                 Response.Redirect("~/Login.aspx");
             }
+            
         }
     }
     protected void ValidateUser(object sender, EventArgs e)

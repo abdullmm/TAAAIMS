@@ -21,7 +21,7 @@
                                                     <fieldset>
                                                         <p align="center" class="text-uppercase">Password Reset: </p>
                                                         <div class="form-group">
-                                                            <asp:TextBox ID="txtUserName" runat="server" class="form-control input-lg" placeholder="Username"></asp:TextBox>
+                                                            <asp:TextBox ID="txtEmail" runat="server" TextMode="Email" class="form-control input-lg" placeholder="Email"></asp:TextBox>
                                                         </div>
 <%--                                                        <div class="form-group">
                                                             <asp:TextBox ID="Password" runat="server" TextMode="Password" class="form-control input-lg" placeholder="Password"></asp:TextBox>
