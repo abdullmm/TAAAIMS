@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<div class="text-center bg-dark">
+    <div class="text-center bg-dark">
         <div class="row d-flex justify-content-center">
             <div class="col-md-6">
                 <div id="cover" class="min-vh-100 bg-dark">
@@ -21,7 +21,7 @@
                                                     <fieldset>
                                                         <p align="center" class="text-uppercase">Password Reset: </p>
                                                         <div class="form-group">
-                                                            <asp:TextBox ID="txtUserName" runat="server" class="form-control input-lg" placeholder="Username"></asp:TextBox>
+                                                            <asp:TextBox ID="txtEmail" runat="server" TextMode="Email" class="form-control input-lg" placeholder="Email"></asp:TextBox>
                                                         </div>
 <%--                                                        <div class="form-group">
                                                             <asp:TextBox ID="Password" runat="server" TextMode="Password" class="form-control input-lg" placeholder="Password"></asp:TextBox>

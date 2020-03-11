@@ -1,10 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeFile="NewPassword.aspx.cs" Inherits="NewPassword" %>
 
-
-
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="text-center bg-dark">
         <div class="row d-flex justify-content-center">
             <div class="col-md-6">
@@ -17,28 +15,42 @@
                                 <div class="px-2 ">
                                     <div id="form" class="justify-content-center">
                                         <div align="center">
-                                                    <fieldset>
-                                                        <p align="center" class="text-uppercase">Password Reset: </p>
-                                                        <div class="form-group">
-                                                            <asp:TextBox ID="txtPassword" runat="server" class="form-control input-lg" placeholder="password"></asp:TextBox>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" class="form-control input-lg" placeholder="Confirm Password"></asp:TextBox>
-                                                        </div>
-                                                        <div class="form-group" align="center">
-                                                            <asp:Button ID="resetPassBtn" runat="server" CommandName="Reset" Text="Reset Password"  class="btn btn-warning" OnClick="resetPassBtn_Click"  />
-                                                        </div>
-                                                        <div class="form-group" align="center">
-                                                            <asp:Label ID="lblMessage" runat="server" Text="Label"></asp:Label>
-                                                        </div>
-<%--                                                        <div class="form-group" align="center">
-                                                            <p align="center">
-                                                                Not a Device Owner or Registered User?
-                                                                <br />
-                                                                Create an account after activating a Device
-                                                            </p>
-                                                        </div>--%>
-                                                    </fieldset>
+                                            <fieldset>
+                                                <p align="center" class="text-uppercase">Password Reset: </p>
+                                                <div class="form-group">
+                                                    <asp:TextBox ID="txtNewPassword" placeholder="New Password" class="form-control input-lg" TextMode="Password"
+                                                        runat="server"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorNewPassword"
+                                                        runat="server" ErrorMessage="New Password required"
+                                                        Text="*" ControlToValidate="txtNewPassword" ForeColor="Red">
+                                                    </asp:RequiredFieldValidator>
+                                                </div>
+                                                <div class="form-group">
+                                                    <asp:TextBox ID="txtConfirmNewPassword" placeholder="Confirm Password" class="form-control input-lg"  TextMode="Password" runat="server">
+                                                    </asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorConfirmNewPassword"
+                                                        runat="server" ErrorMessage="Confirm New Password required" Text="*"
+                                                        ControlToValidate="txtConfirmNewPassword"
+                                                        ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                    <asp:CompareValidator ID="CompareValidatorPassword" runat="server"
+                                                        ErrorMessage="New Password and Confirm New Password must match"
+                                                        ControlToValidate="txtConfirmNewPassword" ForeColor="Red"
+                                                        ControlToCompare="txtNewPassword"
+                                                        Display="Dynamic" Type="String" Operator="Equal" Text="*">
+                                                    </asp:CompareValidator>
+                                                </div>
+                                                <div class="form-group" align="center">
+                                                    <asp:Button ID="resetPassBtn" runat="server" CommandName="Reset" Text="Reset Password" class="btn btn-warning" OnClick="resetPassBtn_Click" />
+                                                </div>
+                                                <div class="form-group" align="center">
+                                                    <asp:Label ID="lblMessage" runat="server">
+                                                    </asp:Label>
+                                                </div>
+                                                <div class="form-group" align="center">
+                                                    <asp:ValidationSummary ID="ValidationSummary1"
+                                                        ForeColor="Red" runat="server" />
+                                                </div>
+                                            </fieldset>
                                         </div>
                                     </div>
                                 </div>
@@ -52,4 +64,3 @@
         </div>
     </div>
 </asp:Content>
-

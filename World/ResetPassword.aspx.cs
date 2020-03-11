@@ -26,7 +26,7 @@ public partial class ResetPassword : System.Web.UI.Page
             cmd = new SqlCommand("spResetPassword", con);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            SqlParameter paramUsername = new SqlParameter("@UserName", txtUserName.Text);
+            SqlParameter paramUsername = new SqlParameter("@FindEmail", txtEmail.Text);
 
             cmd.Parameters.Add(paramUsername);
 
@@ -36,13 +36,13 @@ public partial class ResetPassword : System.Web.UI.Page
             {
                 if (Convert.ToBoolean(rdr["ReturnCode"]))
                 {
-                    SendPasswordResetEmail(rdr["Email"].ToString(), txtUserName.Text, rdr["UniqueId"].ToString());
+                    SendPasswordResetEmail(rdr["Email"].ToString(), txtEmail.Text, rdr["UniqueId"].ToString());
                     lblMessage.Text = "An email with instructions to reset your password is sent to your registered email";
                 }
                 else
                 {
                     lblMessage.ForeColor = System.Drawing.Color.Red;
-                    lblMessage.Text = "Username not found!";
+                    lblMessage.Text = "Email not found!";
                 }
             }
     }
@@ -58,6 +58,7 @@ public partial class ResetPassword : System.Web.UI.Page
         sbEmailBody.Append("Dear " + UserName + ",<br/><br/>");
         sbEmailBody.Append("Please click on the following link to reset your password");
         sbEmailBody.Append("<br/>"); sbEmailBody.Append("http://animalworld.us-east-1.elasticbeanstalk.com/NewPassword.aspx?uid=" + UniqueId);
+        //sbEmailBody.Append("<br/>"); sbEmailBody.Append("http://localhost/World/NewPassword.aspx?uid=" + UniqueId);
         sbEmailBody.Append("<br/><br/>");
         sbEmailBody.Append("<b>Pragim Technologies</b>");
 
