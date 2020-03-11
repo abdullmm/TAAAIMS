@@ -20,7 +20,7 @@ public partial class ActivateUnit : System.Web.UI.Page
     protected void Activate_Click(object sender, EventArgs e)
     {
         conn.Open();
-        SqlCommand cmd = new SqlCommand("select ActivationCode from [dbo].[Device] where ActivationCode = @code and DeviceID = @id and userid is null");
+        SqlCommand cmd = new SqlCommand("select ActivationCode from [dbo].[Device] where ActivationCode = @code and DeviceID = @id");
         cmd.Connection = conn;
         cmd.Parameters.AddWithValue("@code", AccessCode.Text);
         cmd.Parameters.AddWithValue("@id", DeviceNumber.Text);

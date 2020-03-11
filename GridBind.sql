@@ -50,7 +50,7 @@ Create table Project
 )
 
 GO
-CREATE PROCEDURE [dbo].[grid_Bind]
+CREATE PROCEDURE [dbo].[device_Bind]
 @userId int 
 
 AS

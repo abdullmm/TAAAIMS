@@ -72,16 +72,16 @@ public partial class OwnerSignUp : System.Web.UI.Page
                 Session["userId"] = userId;
                 con.Close();
 
-                //creates owner in owner table 
-                SqlCommand create = new SqlCommand("insert [dbo].[TeamOwner] (UserId) values @userId");
-                cmd.Parameters.AddWithValue("@userId", (int)Session["userId"]);
+                //creates owner in owner table sql trigger?
+                SqlCommand create = new SqlCommand("insert [dbo].[TeamOwner] values @userId");
                 create.Connection = con;
                 con.Open();
+                cmd.Parameters.AddWithValue("@userId", (int)Session["userId"]);               
                 create.ExecuteNonQuery();
                 con.Close();
 
                 //set the userid to the specific box.
-                SqlCommand update = new SqlCommand("update [dbo].[Device] SET OwnerID = @userId where DeviceID = @deviceId",con);
+                SqlCommand update = new SqlCommand("update [dbo].[Device] SET OwnerID = @userId where DeviceID = @deviceId", con);
                 update.Parameters.AddWithValue("@deviceId", (int)Session["deviceId"]);
                 update.Parameters.AddWithValue("@userId", (int)Session["userId"]);
                 con.Open();
