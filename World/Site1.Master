@@ -14,6 +14,24 @@
 <asp:ContentPlaceHolder ID="head" runat="server">        
 </asp:ContentPlaceHolder>
     <style type="text/css">
+        .a:link,
+        .a:visited
+        {
+            padding: 8px 0;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 90%;
+            border-bottom: 2px solid transparent;
+            transition: border-bottom 0.2s;
+        }
+        a:hover,
+        a:active
+        {
+            color: black;
+            text-decoration: none;
+            border-bottom: 2px solid #e67e22;
+        }
         .main_menu
         {
             /*#ccc*/

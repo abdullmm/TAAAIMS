@@ -17,7 +17,7 @@
             <asp:TextBox ID="accessCode" runat="server" placeholder="Activation Key" class="form-control"></asp:TextBox>                               
         </div>
         <div class="form-group">
-            <asp:Button ID="btnAdd" runat="server" Text="Activate Device" OnClick="add_Click" class="btn btn-warning form-control"/>
+            <asp:Button ID="btnAdd" runat="server" Text="Add Device" OnClick="add_Click" class="btn btn-warning form-control"/>
             <asp:Label ID="lblValid" runat="server" Text="Label" Visible="false"></asp:Label>
         </div>
         <div class="form-group">
