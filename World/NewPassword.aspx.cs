@@ -69,8 +69,7 @@ public partial class NewPassword : System.Web.UI.Page
 
     private bool ChangeUserPassword()
     {
-        List<SqlParameter> paramList;
-        paramList = new List<SqlParameter>()
+        List<SqlParameter> paramList = new List<SqlParameter>()
         {
             new SqlParameter()
             {
@@ -80,7 +79,7 @@ public partial class NewPassword : System.Web.UI.Page
             new SqlParameter()
             {
                 ParameterName = "@Password",
-                Value = FormsAuthentication.HashPasswordForStoringInConfigFile(txtNewPassword.Text, "SHA2_512")
+                Value = txtNewPassword.Text
             }
         };
 
