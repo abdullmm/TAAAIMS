@@ -60,6 +60,28 @@ CREATE TABLE [dbo].[Users](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
+Create table [dbo].[TeamOwner]
+([OwnerID] [int] IDENTITY(1,1) Primary Key,
+[UserId] [INT] NULL FOREIGN KEY (UserId) REFERENCES Users(UserId) ON UPDATE CASCADE,
+[LastUpdated] [DATETIME],
+[LastUpdatedBy] [varchar](30)
+)
+
+Create table [dbo].[TeamMember]
+([MemberID] [int] IDENTITY(1,1) Primary Key,
+[UserId] [INT] NULL FOREIGN KEY (UserId) REFERENCES Users(UserId) ON UPDATE CASCADE,
+[LastUpdated] [DATETIME],
+[LastUpdatedBy] [varchar](30)
+)
+
+Create table [dbo].[Project] 
+([ProjectId] [INT] IDENTITY(1,1) Primary Key,
+[OwnerId] [INT] NULL FOREIGN KEY (OwnerId) REFERENCES TeamOwner(OwnerId) ON UPDATE CASCADE,
+[ProjectName] [varchar](20),
+[LastUpdated] [DATETIME],
+[LastUpdatedBy] [varchar](30)
+)
+
 Create table Device
 ([DeviceID] [int] IDENTITY(1,1) Primary Key,
 [ActivationCode] [varchar](30),
@@ -74,11 +96,12 @@ Create table Device
 [BattLife] [Int],
 [Latitude] [Decimal](12, 10),
 [Longitude] [Decimal](12, 10),
-[UserId] [INT] NULL FOREIGN KEY (UserId) REFERENCES Users(UserId) ON UPDATE CASCADE
+[OwnerID] [INT] NULL FOREIGN KEY (OwnerID) REFERENCES TeamOwner(OwnerID),
+[ProjectId] [INT] NULL FOREIGN KEY (ProjectId) REFERENCES Project(ProjectId)
 )
 
-Insert into Device values ('hello', 'device_1_bryan', 1, NULL, 'video', 3, 5, 2, 'grams', 82, 35.52477, -78.999561, NULL);
-Insert into Device values ('yes', 'device_2_bryan', 1, 1, 'video', 3, 5, 2, 'grams', 52, 38.11451, -78.127201, NULL);
+Insert into Device values ('hello', 'device_1_bryan', 1, NULL, 'video', 3, 5, 2, 'grams', 82, 35.52477, -78.999561, NULL, NULL);
+Insert into Device values ('yes', 'device_2_bryan', 1, 1, 'video', 3, 5, 2, 'grams', 52, 38.11451, -78.127201, NULL, NULL);
 
 Create Table Record
 ([RecordID] [int] IDENTITY(1,1) Primary Key,
@@ -99,6 +122,31 @@ Insert into Record values ('10/21/2019 22:28', 20, 26, 42, 'null', 1, 'Sorex Ari
 Insert into Record values ('10/20/2019 20:29', 20, 26, 42, 'null', 1.25, 'Sorex Arizonae', 'Arizona shrew', 1, 1)
 Insert into Record values ('10/20/2019 23:29', 20, 26, 42, 'null', 1, 'Sorex alakanus', 'Glacier Bay water shrew', 1, 1)
 Insert into Record values ('10/20/2019 23:28', 20, 26, 42, 'null', 3, 'Sorex sonomae', 'Fog shrew', 1, 1)
+
+USE [LoginDB]
+GO
+
+/****** Object:  Table [dbo].[ResetPasswordRequests]    Script Date: 3/11/2020 4:08:44 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ResetPasswordRequests](
+	[Id] [uniqueidentifier] NOT NULL,
+	[UserId] [int] NULL,
+	[ResetRequestDateTime] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[ResetPasswordRequests]  WITH CHECK ADD FOREIGN KEY([UserId])
+REFERENCES [dbo].[Users] ([UserId])
+GO
 
 GO
 
@@ -140,41 +188,22 @@ BEGIN
 			   ,[Salt]
 			   ,[Email]
 			   ,[CreatedDate]
-			   ,[RoleId])
-			   ,[Image]
+			   ,[RoleId]
+			   ,[Image])
 		VALUES
 			   (@Username
 			   ,HASHBYTES('SHA2_512', @Password+CAST(@salt AS NVARCHAR(36)))
 			   ,@Salt
 			   ,@Email
 			   ,GETDATE()
-			   ,@Role)
-			   ,@Image
+			   ,@Role
+			   ,@Image)
 		
 		SELECT SCOPE_IDENTITY() -- UserId			   
      END
 END
 
-GO
-CREATE PROCEDURE [dbo].[grid_Bind]
-@userId int 
 
-AS
-BEGIN
-SELECT [DeviceID], [Nickname], [Bluetooth],
-[Wifi],
-[MediaMode],
-[IntervalDelay],
-[VideoDuration],
-[NumberImages],
-[WgtUnit],
-[BattLife],
-[Latitude],
-[Longitude] 
-FROM [dbo].[Device] INNER JOIN [dbo].[Users] ON Device.UserId = Users.UserId WHERE(Users.UserId = @userid)
-END
-
-GO
 
 /* Table [dbo].[UserActivation] */
 SET ANSI_NULLS ON

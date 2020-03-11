@@ -41,4 +41,8 @@ EXEC dbo.[Insert_User]
 @Role = '3',
 @Image = '~/Files/personavatar.png'
 
+Insert [dbo].[TeamOwner] (UserId) values (3);
+
+Insert [dbo].[TeamMember] (UserId) values (2);
+
 

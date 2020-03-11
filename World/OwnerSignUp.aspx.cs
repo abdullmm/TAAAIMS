@@ -64,9 +64,6 @@ public partial class OwnerSignUp : System.Web.UI.Page
                     lblValid.Text = "Your Account has been created successfully!";
                     btnLogin.Visible = true;
                 }
-
-
-
                 //get the id of the user you just inserted
                 cmd = new SqlCommand("select userid from users where @email=lower(email)", con);
                 cmd.Parameters.AddWithValue("@email", txtEmail.Text.ToLower());
@@ -75,8 +72,16 @@ public partial class OwnerSignUp : System.Web.UI.Page
                 Session["userId"] = userId;
                 con.Close();
 
+                //creates owner given the user id
+                SqlCommand create = new SqlCommand("insert [dbo].[TeamOwner] (UserId) values @userId");
+                cmd.Parameters.AddWithValue("@userId", (int)Session["userId"]);
+                create.Connection = con;
+                con.Open();
+                create.ExecuteNonQuery();
+                con.Close();
+
                 //set the userid to the specific box.
-                SqlCommand update = new SqlCommand("update [dbo].[Device] SET UserId = @userId where DeviceID = @deviceId",con);
+                SqlCommand update = new SqlCommand("update [dbo].[Device] SET OwnerID = @userId where DeviceID = @deviceId",con);
                 update.Parameters.AddWithValue("@deviceId", (int)Session["deviceId"]);
                 update.Parameters.AddWithValue("@userId", (int)Session["userId"]);
                 con.Open();
