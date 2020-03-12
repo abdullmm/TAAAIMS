@@ -50,6 +50,14 @@
                                                     <asp:ValidationSummary ID="ValidationSummary1"
                                                         ForeColor="Red" runat="server" />
                                                 </div>
+                                                
+                                                <div class="form-group" align="center">
+                                                    <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtNewPassword" ID="MyPassordMinLengthValidator" ValidationExpression="^[\s\S]{8,}$" runat="server" ErrorMessage="Password must be at least 8 characters long."></asp:RegularExpressionValidator>
+                                                </div>
+                                                <div class="form-group" align="center">
+                                                    <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtNewPassword" ID="MyPassordRequiredCharacterValidator" ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$" runat="server" ErrorMessage="Must contain at least one uppercase letter, one lowercase letter, and one number."></asp:RegularExpressionValidator>
+                                                </div>
+                                                
                                             </fieldset>
                                         </div>
                                     </div>
