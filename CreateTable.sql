@@ -258,26 +258,15 @@ BEGIN
 	FROM Users WHERE Username = @Username AND [Password] = HASHBYTES('SHA2_512', @Password+CAST(Salt AS NVARCHAR(36)))
 
 	
-	IF @UserId IS NOT NULL
-	BEGIN
-		IF NOT EXISTS(SELECT UserId FROM UserActivation WHERE UserId = @UserId)
-		BEGIN
-			UPDATE Users
-			SET LastLoginDate =  GETDATE()
-			WHERE UserId = @UserId
+
+
+
 			
 			SELECT @UserId [UserId], 
 					(SELECT RoleName FROM Roles 
 					 WHERE RoleId = @RoleId) [Roles] -- User Valid
-		END
-		ELSE
-		BEGIN
-			SELECT -2 [UserId], '' [Roles]-- User not activated.
-		END
-	END
-	ELSE
-	BEGIN
-		SELECT -1 [UserId], '' [Roles] -- User invalid.
-	END
+	
+	
+
 END
 

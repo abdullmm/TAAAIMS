@@ -73,12 +73,12 @@ public partial class OwnerSignUp : System.Web.UI.Page
                 con.Close();
 
                 //creates owner in owner table sql trigger?
-                SqlCommand create = new SqlCommand("insert [dbo].[TeamOwner] values @userId");
-                create.Connection = con;
-                con.Open();
-                cmd.Parameters.AddWithValue("@userId", (int)Session["userId"]);               
-                create.ExecuteNonQuery();
-                con.Close();
+                //SqlCommand create = new SqlCommand("insert [dbo].[TeamOwner] values @userId");
+                //create.Connection = con;
+                //con.Open();
+                //cmd.Parameters.AddWithValue("@userId", (int)Session["userId"]);               
+                //create.ExecuteNonQuery();
+                //con.Close();
 
                 //set the userid to the specific box.
                 SqlCommand update = new SqlCommand("update [dbo].[Device] SET OwnerID = @userId where DeviceID = @deviceId", con);
@@ -87,6 +87,14 @@ public partial class OwnerSignUp : System.Web.UI.Page
                 con.Open();
                 update.ExecuteNonQuery();
                 con.Close();
+
+                ////set the projectid to the specific box.
+                //SqlCommand updateProjID = new SqlCommand("update [dbo].[Device] SET projectid = @projectid where DeviceID = @deviceId", con);
+                //updateProjID.Parameters.AddWithValue("@deviceId", (int)Session["deviceId"]);
+                //updateProjID.Parameters.AddWithValue("@projectid", (int)Session["projectid"]);
+                //con.Open();
+                //updateProjID.ExecuteNonQuery();
+                //con.Close();
 
                 txtEmail.Text = String.Empty;
                 txtUserName.Text = String.Empty;

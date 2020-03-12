@@ -102,6 +102,7 @@ CREATE TABLE [dbo].[UserActivation](
 ) ON [PRIMARY]
 
 GO
+
 CREATE  PROCEDURE [dbo].[Validate_User]
 	@Username NVARCHAR(20),
 	@Password NVARCHAR(20)
