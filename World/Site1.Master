@@ -169,7 +169,7 @@
                 <asp:LoginStatus ID="LoginStatus1" runat="server" CssClass="menu nav-item" LogoutAction="Redirect" LogoutPageUrl="/Home.aspx" Font-Underline="false"/>
                             </ContentTemplate>
                         </asp:RoleGroup>
-                         <asp:RoleGroup Roles="Administrator">
+                         <asp:RoleGroup Roles="Admin">
                             <ContentTemplate>
                                 <asp:Menu ID="MenuBar" runat="server" Orientation="Horizontal" RenderingMode="List" StaticEnableDefaultPopOutImage="false"
                 OnMenuItemDataBound="OnMenuItemDataBound" StaticMenuStyle-CssClass="nav navbar-nav" DynamicMenuStyle-CssClass="dropdown-menu" StaticSelectedStyle-CssClass="nav-item active"

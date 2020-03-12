@@ -32,7 +32,7 @@ public partial class UserSignUp : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@Username", txtUserName.Text);
                 cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
                 cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                cmd.Parameters.AddWithValue("@Role", 2);
+                cmd.Parameters.AddWithValue("@Role", "User");
                 cmd.ExecuteNonQuery();
                 con.Close();
                 lblValid.Visible = true;

@@ -56,7 +56,7 @@ public partial class OwnerSignUp : System.Web.UI.Page
                     cmd.Parameters.AddWithValue("@Username", txtUserName.Text);
                     cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
                     cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                    cmd.Parameters.AddWithValue("@Role", 3);
+                    cmd.Parameters.AddWithValue("@Role", "Owner");
                     cmd.Parameters.AddWithValue("@Image", imagelink);
                     cmd.ExecuteNonQuery();
                     con.Close();
