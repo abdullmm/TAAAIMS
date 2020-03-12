@@ -37,7 +37,7 @@
                                                             <%--<asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>--%>
                                                         </div>
                                                         <div class="form-group" align="center">
-                                                            <%--<asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>--%>
+                                                            <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
                                                             <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" ValidationGroup="Login1" class="btn btn-warning" />
                                                         </div>
                                                         <div class="form-group" align="center">
