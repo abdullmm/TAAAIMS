@@ -129,7 +129,7 @@
                 </asp:MenuItem>
                     <asp:MenuItem Text="Dashboard" >
                     <asp:MenuItem Text="Project" navigateurl="Project.aspx"/>
-                    <asp:MenuItem Text="Drama" />
+                    <asp:MenuItem Text="Records" navigateurl="Records.aspx"/>
                     <asp:MenuItem Text="Music" />
                 </asp:MenuItem>
                 <asp:MenuItem Text="Forum" ></asp:MenuItem>
