@@ -31,7 +31,7 @@
             color: black;
             text-decoration: none;
             border-bottom: 2px solid #e67e22;
-        }
+        }       
         .main_menu
         {
             /*#ccc*/
@@ -73,7 +73,21 @@
             /*font-weight: bold;*/
             font-size: 20px;           
             background: none;
+            margin-bottom: -1px;
         }
+        .menu:hover 
+        {
+            color: black;
+            text-decoration: none;
+            border-bottom: 2px solid #e67e22;
+        }
+        .menu_hover         
+        {
+            color: black;
+            text-decoration: none;
+            border-bottom: 2px solid #e67e22;
+        }
+        
         </style> 
 </head>
 <body>
@@ -88,13 +102,12 @@
                <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false" SiteMapProvider="SiteMap"/>
                <asp:Menu ID="MenuBar" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" RenderingMode="List"
                OnMenuItemDataBound="OnMenuItemDataBound" StaticMenuStyle-CssClass="nav navbar-nav" DynamicMenuStyle-CssClass="dropdown-menu" StaticSelectedStyle-CssClass="nav-item active"
-               StaticMenuItemStyle-CssClass="nav-item" statichoverstyle-CssClass="">
+               StaticMenuItemStyle-CssClass="nav-item" statichoverstyle-CssClass="menu_hover" DynamicHoverStyle-CssClass="menu_hover">
                <LevelMenuItemStyles>
                <asp:MenuItemStyle CssClass="menu" />
 
                </LevelMenuItemStyles>
-               <StaticHoverStyle />
-               <StaticSelectedStyle />                                     
+                                                   
                
                </asp:Menu>
 
@@ -110,16 +123,17 @@
                </AnonymousTemplate>              
                      <RoleGroups>
                         <asp:RoleGroup Roles="Owner">
-                            <ContentTemplate>
-                                <asp:Menu ID="MenuBar" runat="server" Orientation="Horizontal" RenderingMode="List" StaticEnableDefaultPopOutImage="false"
+                            <ContentTemplate>             
+                <asp:Menu ID="MenuBar" runat="server" Orientation="Horizontal" RenderingMode="List" StaticEnableDefaultPopOutImage="false" 
                 OnMenuItemDataBound="OnMenuItemDataBound" StaticMenuStyle-CssClass="nav navbar-nav" DynamicMenuStyle-CssClass="dropdown-menu" StaticSelectedStyle-CssClass="active"
-                StaticMenuItemStyle-CssClass="nav-item" StaticHoverStyle-CssClass="active" >
+                StaticMenuItemStyle-CssClass="menu">
+                <StaticHoverStyle CssClass ="menu:hover"/>
                 <LevelMenuItemStyles>
                 <asp:MenuItemStyle CssClass="menu" />
-                <asp:MenuItemStyle CssClass="level_menu active" />
+                <asp:MenuItemStyle CssClass="level_menu" />
 
                 </LevelMenuItemStyles>
-                <StaticSelectedStyle />                                     
+                                                
                 <Items>
                 <asp:MenuItem Text="Home" navigateurl="Home.aspx"></asp:MenuItem>
                 <asp:MenuItem Text="About" navigateurl="Contact.aspx"></asp:MenuItem>
@@ -137,8 +151,6 @@
                 </Items>
                 </asp:Menu>
                 <asp:LoginStatus ID="LoginStatus1" runat="server" CssClass="menu nav-item" LogoutAction="Redirect" LogoutPageUrl="/Home.aspx" Font-Underline="false"/>
-                                <%--<asp:LoginName id="LoginName2" runat="Server"></asp:LoginName>, you
-                                are logged in as an Owner.--%>
                 </ContentTemplate>
                         </asp:RoleGroup>
                          <asp:RoleGroup Roles="User">
